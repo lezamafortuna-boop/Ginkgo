@@ -1,27 +1,34 @@
+import Card from "@/components/ui/Card";
+
+export const metadata = {
+  title: "Cookie Policy",
+  alternates: {
+    canonical: "/en/cookies",
+    languages: { "es-MX": "/es/cookies", "en-US": "/en/cookies" },
+  },
+};
+
 export default function CookiesEN() {
   return (
-    <main className="bg-[#0D0D0D] text-white min-h-screen py-20 px-8">
-      <section className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-serif font-bold mb-6">
-          Cookie Policy
-        </h1>
-        <p className="text-gray-400 mb-8">
+    <main className="min-h-screen bg-cream px-6 py-20 md:px-10">
+      <section className="mx-auto max-w-4xl">
+        <h1 className="mb-6 font-serif text-4xl font-semibold text-charcoal">Cookie Policy</h1>
+        <p className="mb-8 text-ink">
           This policy explains how we use cookies and similar technologies on our site.
         </p>
 
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] space-y-6 text-gray-300 leading-relaxed">
+        <Card className="space-y-6 leading-relaxed text-ink">
           <p>
-            We use cookies to improve browsing experience, remember basic preferences, and analyze site usage.
+            We use cookies to improve browsing experience, remember basic preferences, and
+            analyze site usage.
           </p>
+          <p>Cookies are not used to personally identify users without their explicit consent.</p>
           <p>
-            Cookies are not used to personally identify users without their explicit consent.
+            Users may disable cookies in their browser settings. Some site features may be
+            affected.
           </p>
-          <p>
-            Users may disable cookies in their browser settings. Some site features may be affected.
-          </p>
-        </div>
+        </Card>
       </section>
     </main>
   );
 }
-

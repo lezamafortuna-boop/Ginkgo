@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node _make-favicon.mjs)",
+      "Bash(rm _make-favicon.mjs _crop-icon.mjs _analyze.mjs)",
+      "Bash(node _make-og.mjs)"
+    ]
+  }
+}

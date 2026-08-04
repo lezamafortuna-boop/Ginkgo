@@ -1,25 +1,38 @@
+import Card from "@/components/ui/Card";
+
+export const metadata = {
+  title: "Política de Cookies",
+  alternates: {
+    canonical: "/es/cookies",
+    languages: { "es-MX": "/es/cookies", "en-US": "/en/cookies" },
+  },
+};
+
 export default function CookiesES() {
   return (
-    <main className="bg-[#0D0D0D] text-white min-h-screen py-20 px-8">
-      <section className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-serif font-bold mb-6">
+    <main className="min-h-screen bg-cream px-6 py-20 md:px-10">
+      <section className="mx-auto max-w-4xl">
+        <h1 className="mb-6 font-serif text-4xl font-semibold text-charcoal">
           Política de Cookies
         </h1>
-        <p className="text-gray-400 mb-8">
+        <p className="mb-8 text-ink">
           Esta política explica cómo utilizamos cookies y tecnologías similares en nuestro sitio.
         </p>
 
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] space-y-6 text-gray-300 leading-relaxed">
+        <Card className="space-y-6 leading-relaxed text-ink">
           <p>
-            Utilizamos cookies para mejorar la experiencia de navegación, recordar preferencias básicas y analizar el uso del sitio.
+            Utilizamos cookies para mejorar la experiencia de navegación, recordar preferencias
+            básicas y analizar el uso del sitio.
           </p>
           <p>
-            Las cookies no se utilizan para identificar personalmente al usuario sin su consentimiento explícito.
+            Las cookies no se utilizan para identificar personalmente al usuario sin su
+            consentimiento explícito.
           </p>
           <p>
-            El usuario puede desactivar cookies desde la configuración de su navegador. Algunas funciones del sitio pueden verse afectadas.
+            El usuario puede desactivar cookies desde la configuración de su navegador. Algunas
+            funciones del sitio pueden verse afectadas.
           </p>
-        </div>
+        </Card>
       </section>
     </main>
   );

@@ -1,3 +1,5 @@
-import studio from '@sanity/eslint-config-studio'
+import { FlatCompat } from "@eslint/eslintrc";
 
-export default [...studio]
+const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
+
+export default [...compat.extends("next/core-web-vitals")];

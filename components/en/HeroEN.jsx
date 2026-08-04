@@ -1,53 +1,54 @@
+import Button from "../ui/Button";
+import Eyebrow from "../ui/Eyebrow";
+import LeadForm from "../LeadForm";
+
 export default function HeroEN() {
   return (
-    <section
-      className="relative h-screen flex items-center justify-center text-white"
-      style={{ backgroundImage: "url('/hero.jpg')" }}
-    >
-      <div className="absolute inset-0 bg-black/60"></div>
+    <>
+      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/videos/hero-vid.mp4"
+          poster="/videos/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-charcoal/55" />
 
-      <div className="relative z-10 max-w-3xl text-center px-6">
-        <h1 className="text-5xl font-serif font-bold mb-4">
-          Real Estate Development Opportunities in Mexico
-        </h1>
-
-        <p className="text-xl text-gray-300 mb-8">
-          We identify, structure, and market real estate opportunities for developers and investors.
-        </p>
-
-        <div className="flex justify-center gap-4 mb-12">
-          <a
-            href="/en/opportunities"
-            className="px-6 py-3 bg-[#C9A86A] text-black font-semibold rounded"
-          >
-            Explore opportunities
-          </a>
-
-          <a
-            href="#formEN"
-            className="px-6 py-3 border border-white rounded"
-          >
-            Request information
-          </a>
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
+          <Eyebrow className="text-white/80">Analysis · Structure · Commercialization</Eyebrow>
+          <h1 className="mt-4 font-serif text-4xl font-medium leading-tight md:text-6xl">
+            Real Estate Development Opportunities in Mexico
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-white/85">
+            We identify, structure, and market real estate opportunities for developers and
+            investors.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Button href="/en/opportunities">Explore opportunities</Button>
+            <Button href="#formEN" variant="ghost">
+              Request information
+            </Button>
+          </div>
         </div>
+      </section>
 
-        <form
-          id="formEN"
-          className="bg-black/70 p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4"
-        >
-          <input className="bg-[#1A1A1A] p-3 rounded text-white" placeholder="Name" />
-          <input className="bg-[#1A1A1A] p-3 rounded text-white" placeholder="Email" />
-          <input className="bg-[#1A1A1A] p-3 rounded text-white" placeholder="Phone" />
-          <input className="bg-[#1A1A1A] p-3 rounded text-white" placeholder="Company (optional)" />
-          <input className="bg-[#1A1A1A] p-3 rounded text-white md:col-span-2" placeholder="Project type" />
-
-          <button
-            className="bg-[#C9A86A] text-black font-semibold py-3 rounded md:col-span-2"
-          >
-            Submit request
-          </button>
-        </form>
-      </div>
-    </section>
+      <section id="formEN" className="bg-cream px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl rounded-lg border border-border bg-paper p-8 shadow-sm md:p-12">
+          <h2 className="mb-2 font-serif text-2xl font-semibold text-charcoal">
+            Request information
+          </h2>
+          <p className="mb-8 text-sm text-muted">
+            Tell us what kind of project you're looking for and we'll follow up with aligned
+            opportunities.
+          </p>
+          <LeadForm locale="en" source="EN - Home" id="lead-hero-en" />
+        </div>
+      </section>
+    </>
   );
 }

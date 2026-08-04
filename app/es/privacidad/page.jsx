@@ -1,35 +1,47 @@
+import Card from "@/components/ui/Card";
+
+export const metadata = {
+  title: "Aviso de Privacidad",
+  alternates: {
+    canonical: "/es/privacidad",
+    languages: { "es-MX": "/es/privacidad", "en-US": "/en/privacy" },
+  },
+};
+
 export default function PrivacidadES() {
   return (
-    <main className="bg-[#0D0D0D] text-white min-h-screen py-20 px-8">
-      <section className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-serif font-bold mb-6">
+    <main className="min-h-screen bg-cream px-6 py-20 md:px-10">
+      <section className="mx-auto max-w-4xl">
+        <h1 className="mb-6 font-serif text-4xl font-semibold text-charcoal">
           Aviso de Privacidad
         </h1>
-
-        <p className="text-gray-400 mb-8">
-          Este aviso explica cómo Ginkgo recopila, utiliza y protege la información proporcionada por los usuarios.
+        <p className="mb-8 text-ink">
+          Este aviso explica cómo Ginkgo recopila, utiliza y protege la información
+          proporcionada por los usuarios.
         </p>
 
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] space-y-6 text-gray-300 leading-relaxed">
+        <Card className="space-y-6 leading-relaxed text-ink">
           <p>
-            Ginkgo recopila datos de contacto proporcionados voluntariamente por el usuario, como nombre, correo electrónico, teléfono y empresa.
+            Ginkgo recopila datos de contacto proporcionados voluntariamente por el usuario, como
+            nombre, correo electrónico, teléfono y empresa.
           </p>
-
           <p>
-            Esta información se utiliza exclusivamente para dar seguimiento a solicitudes de información, compartir oportunidades y mantener comunicación relacionada con nuestros servicios.
+            Esta información se utiliza exclusivamente para dar seguimiento a solicitudes de
+            información, compartir oportunidades y mantener comunicación relacionada con nuestros
+            servicios.
           </p>
-
           <p>
-            No compartimos datos personales con terceros ajenos a la relación comercial, salvo obligación legal.
+            No compartimos datos personales con terceros ajenos a la relación comercial, salvo
+            obligación legal.
           </p>
-
           <p>
             El usuario puede solicitar la actualización o eliminación de sus datos escribiendo a{" "}
-            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-[#C9A86A]">
+            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-teal-600 hover:underline">
               tonatiuhcervantes@ginkgomx.com
-            </a>.
+            </a>
+            .
           </p>
-        </div>
+        </Card>
       </section>
     </main>
   );

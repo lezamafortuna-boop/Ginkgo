@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# Next.js build output
+/.next
+
 # Compiled Sanity Studio
 /dist
 
@@ -27,3 +30,7 @@
 
 # Dotenv and similar local-only files
 *.local
+
+# Raw source video — 432MB, exceeds GitHub's 100MB file limit.
+# The compressed hero-vid.mp4 actually used by the site stays tracked.
+public/videos/HeroVid.mp4

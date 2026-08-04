@@ -1,51 +1,44 @@
 import { opportunities } from "@/data/opportunities";
+import Photo from "../ui/Photo";
+import Button from "../ui/Button";
+import Card from "../ui/Card";
+import Eyebrow from "../ui/Eyebrow";
 
 export default function FeaturedOpportunitiesEN() {
   const featured = opportunities.filter((op) => op.featured).slice(0, 3);
 
   return (
-    <section className="bg-[#0D0D0D] text-white py-20 px-8">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-10">
+    <section className="bg-cream px-6 py-20 md:px-10">
+      <div className="mx-auto max-w-6xl">
+        <Eyebrow>Portfolio</Eyebrow>
+        <h2 className="mt-2 font-serif text-3xl font-semibold text-charcoal md:text-4xl">
           Featured Opportunities
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
           {featured.map((op) => (
-            <div
-              key={op.slug}
-              className="bg-[#1A1A1A] rounded-lg overflow-hidden shadow-lg border border-[#333]"
-            >
-              <img
-                src={op.image}
-                alt={op.name}
-                className="h-48 w-full object-cover"
-              />
+            <Card key={op.slug} className="flex flex-col overflow-hidden p-0">
+              <Photo src={op.image} alt={op.name_en} className="h-52 w-full" />
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="font-serif text-xl font-semibold text-charcoal">{op.name_en}</h3>
+                <p className="mt-1 text-sm text-muted">{op.city_en}</p>
+                <p className="mt-3 text-sm text-ink">Surface: {op.surface}</p>
+                <p className="text-sm text-ink">Land use: {op.vocation_en}</p>
 
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{op.name}</h3>
-                <p className="text-gray-400 mb-2">{op.city}</p>
-                <p className="text-gray-400 mb-2">
-                  Surface: {op.surface}
-                </p>
-                <p className="text-gray-400 mb-4">
-                  Land use: {op.vocation}
-                </p>
-
-                <ul className="text-gray-300 mb-4 list-disc list-inside">
-                  {op.advantages.map((adv, i) => (
-                    <li key={i}>{adv}</li>
+                <ul className="mt-4 space-y-1 text-sm text-ink">
+                  {op.advantages_en.slice(0, 2).map((adv) => (
+                    <li key={adv} className="flex gap-2">
+                      <span className="text-teal-600">—</span>
+                      {adv}
+                    </li>
                   ))}
                 </ul>
 
-                <a
-                  href={`/en/opportunities/${op.slug}`}
-                  className="inline-block px-4 py-2 bg-[#C9A86A] text-black font-semibold rounded"
-                >
+                <Button href={`/en/opportunities/${op.slug}`} variant="outline" className="mt-6 self-start">
                   View opportunity
-                </a>
+                </Button>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

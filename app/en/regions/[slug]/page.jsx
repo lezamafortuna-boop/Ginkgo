@@ -1,83 +1,78 @@
+import { notFound } from "next/navigation";
 import { regions } from "@/data/regions";
+import Photo from "@/components/ui/Photo";
+import Eyebrow from "@/components/ui/Eyebrow";
+import LeadForm from "@/components/LeadForm";
 
-export default function RegionDetailEN({ params }) {
-  const region = regions.find((r) => r.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const region = regions.find((r) => r.slug === slug);
+  if (!region) return {};
+  return {
+    title: region.name_en,
+    description: region.description_en,
+    alternates: {
+      canonical: `/en/regions/${slug}`,
+      languages: { "es-MX": `/es/regiones/${slug}`, "en-US": `/en/regions/${slug}` },
+    },
+  };
+}
 
-  if (!region) {
-    return <div className="text-white p-20">Region not found.</div>;
-  }
+export default async function RegionDetailEN({ params }) {
+  const { slug } = await params;
+  const region = regions.find((r) => r.slug === slug);
+  if (!region) notFound();
 
   return (
-    <main className="bg-[#0D0D0D] text-white">
-
-      {/* HERO */}
-      <section
-        className="relative h-[50vh] flex items-center justify-center"
-        style={{ backgroundImage: `url(${region.heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/60"></div>
-        <h1 className="relative z-10 text-4xl font-serif font-bold text-center px-4">
+    <main className="bg-cream">
+      <section className="relative flex h-[50vh] items-center justify-center overflow-hidden">
+        <Photo src={region.heroImage} alt={region.name_en} className="absolute inset-0" priority />
+        <div className="absolute inset-0 bg-charcoal/50" />
+        <h1 className="relative z-10 px-4 text-center font-serif text-4xl font-semibold text-white">
           {region.name_en}
         </h1>
       </section>
 
-      {/* DESCRIPTION */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <p className="text-gray-300 leading-relaxed bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
+      <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
+        <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed text-ink shadow-sm">
           {region.description_en}
         </p>
       </section>
 
-      {/* ADVANTAGES */}
-      <section className="py-10 px-8 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-6">
+      <section className="mx-auto max-w-5xl px-6 pb-10 md:px-10">
+        <Eyebrow>Why this region</Eyebrow>
+        <h2 className="mt-2 mb-6 font-serif text-3xl font-semibold text-charcoal">
           Strategic Advantages
         </h2>
-
         <ul className="space-y-4">
-          {region.advantages_en.map((adv, i) => (
-            <li
-              key={i}
-              className="bg-[#1A1A1A] p-6 rounded-lg border border-[#333] text-gray-300"
-            >
+          {region.advantages_en.map((adv) => (
+            <li key={adv} className="rounded-lg border border-border bg-paper p-6 text-ink shadow-sm">
               {adv}
             </li>
           ))}
         </ul>
       </section>
 
-      {/* MAP */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <img
+      <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
+        <Photo
           src={region.mapImage}
-          className="w-full h-96 object-cover rounded border border-[#333]"
+          alt={`Map of ${region.name_en}`}
+          className="h-96 w-full rounded-lg border border-border"
         />
       </section>
 
-      {/* CTA FORM */}
-      <section id="formEN" className="py-20 px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          Looking for opportunities in this region?
-        </h2>
-        <p className="text-gray-400 mb-12">
-          Tell us your requirements and we will present options aligned with your profile.
-        </p>
-
-        <form className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Name" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Email" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Phone" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Company (optional)" />
-          <textarea
-            className="bg-[#0D0D0D] p-3 rounded text-white md:col-span-2"
-            placeholder="Tell us what type of opportunity you're looking for"
-            rows={4}
-          ></textarea>
-
-          <button className="bg-[#C9A86A] text-black font-semibold py-3 rounded md:col-span-2">
-            Request Information
-          </button>
-        </form>
+      <section id="formEN" className="bg-paper px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif text-3xl font-semibold text-charcoal">
+            Looking for opportunities in this region?
+          </h2>
+          <p className="mt-4 text-ink">
+            Tell us your requirements and we will present options aligned with your profile.
+          </p>
+          <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
+            <LeadForm locale="en" source={`EN - Region ${region.name_en}`} id="lead-region" />
+          </div>
+        </div>
       </section>
     </main>
   );

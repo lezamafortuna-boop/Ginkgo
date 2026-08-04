@@ -1,75 +1,73 @@
+import Eyebrow from "@/components/ui/Eyebrow";
+import Card from "@/components/ui/Card";
+import LeadForm from "@/components/LeadForm";
+
+export const metadata = {
+  title: "Servicios",
+  description:
+    "Soluciones especializadas para desarrolladores e inversionistas que buscan oportunidades estratégicas en México.",
+  alternates: {
+    canonical: "/es/servicios",
+    languages: { "es-MX": "/es/servicios", "en-US": "/en/services" },
+  },
+};
+
+const services = [
+  {
+    title: "Identificación de Oportunidades",
+    text: "Analizamos corredores de crecimiento, infraestructura, vocación de suelo y tendencias urbanas para detectar terrenos con alto potencial de desarrollo. Nuestro enfoque combina análisis técnico, urbano y comercial.",
+  },
+  {
+    title: "Análisis y Estructuración",
+    text: "Evaluamos cada oportunidad desde una perspectiva integral: superficie, accesos, infraestructura, normativa, vocación y potencial de plusvalía. Estructuramos la información para facilitar la toma de decisiones.",
+  },
+  {
+    title: "Comercialización Especializada",
+    text: "Conectamos oportunidades con desarrolladores e inversionistas mediante estrategias comerciales enfocadas en proyectos de largo plazo. Presentamos información clara, técnica y confiable.",
+  },
+  {
+    title: "Acompañamiento Integral",
+    text: "Brindamos soporte durante todo el proceso: desde el primer acercamiento hasta la negociación final. Nuestro objetivo es facilitar decisiones informadas y seguras.",
+  },
+];
+
 export default function ServiciosES() {
   return (
-    <main className="bg-[#0D0D0D] text-white">
-
-      {/* HERO */}
-      <section className="py-24 px-8 text-center">
-        <h1 className="text-4xl font-serif font-bold mb-4">
+    <main className="bg-cream">
+      <section className="px-6 py-24 text-center md:px-10">
+        <Eyebrow>Lo que hacemos</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">
           Servicios
         </h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Soluciones especializadas para desarrolladores e inversionistas que buscan oportunidades estratégicas en México.
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">
+          Soluciones especializadas para desarrolladores e inversionistas que buscan
+          oportunidades estratégicas en México.
         </p>
       </section>
 
-      {/* IDENTIFICACIÓN DE OPORTUNIDADES */}
-      <section className="py-20 px-8 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          Identificación de Oportunidades
-        </h2>
-        <p className="text-gray-300 leading-relaxed bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          Analizamos corredores de crecimiento, infraestructura, vocación de suelo y tendencias urbanas para detectar terrenos con alto potencial de desarrollo. Nuestro enfoque combina análisis técnico, urbano y comercial.
-        </p>
+      <section className="mx-auto max-w-5xl space-y-8 px-6 pb-20 md:px-10">
+        {services.map((service) => (
+          <Card key={service.title}>
+            <h2 className="mb-4 font-serif text-2xl font-semibold text-charcoal">
+              {service.title}
+            </h2>
+            <p className="leading-relaxed text-ink">{service.text}</p>
+          </Card>
+        ))}
       </section>
 
-      {/* ANÁLISIS Y ESTRUCTURACIÓN */}
-      <section className="py-20 px-8 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          Análisis y Estructuración
-        </h2>
-        <p className="text-gray-300 leading-relaxed bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          Evaluamos cada oportunidad desde una perspectiva integral: superficie, accesos, infraestructura, normativa, vocación y potencial de plusvalía. Estructuramos la información para facilitar la toma de decisiones.
-        </p>
-      </section>
-
-      {/* COMERCIALIZACIÓN ESPECIALIZADA */}
-      <section className="py-20 px-8 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          Comercialización Especializada
-        </h2>
-        <p className="text-gray-300 leading-relaxed bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          Conectamos oportunidades con desarrolladores e inversionistas mediante estrategias comerciales enfocadas en proyectos de largo plazo. Presentamos información clara, técnica y confiable.
-        </p>
-      </section>
-
-      {/* ACOMPAÑAMIENTO INTEGRAL */}
-      <section className="py-20 px-8 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          Acompañamiento Integral
-        </h2>
-        <p className="text-gray-300 leading-relaxed bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          Brindamos soporte durante todo el proceso: desde el primer acercamiento hasta la negociación final. Nuestro objetivo es facilitar decisiones informadas y seguras.
-        </p>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          ¿Buscas un terreno para desarrollar?
-        </h2>
-        <p className="text-gray-400 mb-12">
-          Cuéntanos tus necesidades y encontraremos oportunidades alineadas con tus objetivos.
-        </p>
-
-        <form className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Nombre" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Correo" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Teléfono" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Empresa (opcional)" />
-          <button className="bg-[#C9A86A] text-black font-semibold py-3 rounded md:col-span-2">
-            Enviar solicitud
-          </button>
-        </form>
+      <section id="formulario" className="bg-paper px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif text-3xl font-semibold text-charcoal">
+            ¿Buscas un terreno para desarrollar?
+          </h2>
+          <p className="mt-4 text-ink">
+            Cuéntanos tus necesidades y encontraremos oportunidades alineadas con tus objetivos.
+          </p>
+          <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
+            <LeadForm locale="es" source="ES - Servicios" id="lead-servicios" />
+          </div>
+        </div>
       </section>
     </main>
   );

@@ -1,16 +1,35 @@
 import NavbarEN from "@/components/en/NavbarEN";
 import FooterEN from "@/components/en/FooterEN";
 import FixedCTA from "@/components/FixedCTA";
+import SetHtmlLang from "@/components/SetHtmlLang";
+
+export const metadata = {
+  title: {
+    default: "GINKGO — Strategic Land Opportunities in Mexico",
+    template: "%s | GINKGO",
+  },
+  description:
+    "Curated real estate development opportunities in Mexico for developers and investors.",
+  alternates: {
+    canonical: "/en",
+    languages: { "es-MX": "/es", "en-US": "/en" },
+  },
+  openGraph: {
+    siteName: "GINKGO",
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/images/og-default.jpg", width: 1200, height: 630 }],
+  },
+};
 
 export default function LayoutEN({ children }) {
   return (
-    <html lang="en">
-      <body className="bg-[#0D0D0D] text-white">
-        <NavbarEN />
-        {children}
-        <FooterEN />
-        <FixedCTA />
-      </body>
-    </html>
+    <>
+      <SetHtmlLang lang="en" />
+      <NavbarEN />
+      {children}
+      <FooterEN />
+      <FixedCTA />
+    </>
   );
 }

@@ -1,47 +1,48 @@
 import { opportunities } from "@/data/opportunities";
+import Photo from "@/components/ui/Photo";
+import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
+import Eyebrow from "@/components/ui/Eyebrow";
+
+export const metadata = {
+  title: "Oportunidades",
+  description: "Terrenos estratégicos para desarrolladores e inversionistas en México.",
+  alternates: {
+    canonical: "/es/oportunidades",
+    languages: { "es-MX": "/es/oportunidades", "en-US": "/en/opportunities" },
+  },
+};
 
 export default function OpportunitiesListES() {
   return (
-    <main className="bg-[#0D0D0D] text-white min-h-screen">
-
-      {/* HERO */}
-      <section className="py-20 px-8 text-center">
-        <h1 className="text-4xl font-serif font-bold mb-4">
+    <main className="min-h-screen bg-cream">
+      <section className="px-6 py-20 text-center md:px-10">
+        <Eyebrow>Portafolio</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">
           Oportunidades Inmobiliarias
         </h1>
-        <p className="text-gray-400 text-lg">
+        <p className="mt-4 text-lg text-ink">
           Terrenos estratégicos para desarrolladores e inversionistas.
         </p>
       </section>
 
-      {/* GRID */}
-      <section className="px-8 pb-20 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        {opportunities.map((op) => (
-          <div
-            key={op.slug}
-            className="bg-[#1A1A1A] rounded-lg overflow-hidden border border-[#333] shadow-lg"
-          >
-            <img
-              src={op.image}
-              alt={op.name}
-              className="h-48 w-full object-cover"
-            />
-
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{op.name}</h3>
-              <p className="text-gray-400 mb-1">{op.city}</p>
-              <p className="text-gray-400 mb-1">Superficie: {op.surface}</p>
-              <p className="text-gray-400 mb-4">Vocación: {op.vocation}</p>
-
-              <a
-                href={`/es/oportunidades/${op.slug}`}
-                className="inline-block px-4 py-2 bg-[#C9A86A] text-black font-semibold rounded"
-              >
-                Ver oportunidad
-              </a>
-            </div>
-          </div>
-        ))}
+      <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {opportunities.map((op) => (
+            <Card key={op.slug} className="flex flex-col overflow-hidden p-0">
+              <Photo src={op.image} alt={op.name_es} className="h-48 w-full" />
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="font-serif text-xl font-semibold text-charcoal">{op.name_es}</h3>
+                <p className="mt-1 text-sm text-muted">{op.city_es}</p>
+                <p className="mt-3 text-sm text-ink">Superficie: {op.surface}</p>
+                <p className="mb-4 text-sm text-ink">Vocación: {op.vocation_es}</p>
+                <Button href={`/es/oportunidades/${op.slug}`} variant="outline" className="mt-auto self-start">
+                  Ver oportunidad
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
       </section>
     </main>
   );

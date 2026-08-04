@@ -1,90 +1,91 @@
+import Eyebrow from "@/components/ui/Eyebrow";
+import Card from "@/components/ui/Card";
+import LeadForm from "@/components/LeadForm";
+import { MailIcon, PhoneIcon, InstagramIcon } from "@/components/ui/icons";
+
+export const metadata = {
+  title: "Contacto",
+  description: "Estamos aquí para ayudarte a encontrar oportunidades estratégicas de desarrollo.",
+  alternates: {
+    canonical: "/es/contacto",
+    languages: { "es-MX": "/es/contacto", "en-US": "/en/contact" },
+  },
+};
+
 export default function ContactoES() {
   return (
-    <main className="bg-[#0D0D0D] text-white">
-
-      {/* FIXED CTA BUTTON */}
-      <a
-        href="#formulario"
-        className="fixed bottom-6 right-6 bg-[#C9A86A] text-black font-semibold px-5 py-3 rounded shadow-lg z-50"
-      >
-        Solicitar información
-      </a>
-
-      {/* HERO */}
-      <section className="py-24 px-8 text-center">
-        <h1 className="text-4xl font-serif font-bold mb-4">
+    <main className="bg-cream">
+      <section className="px-6 py-24 text-center md:px-10">
+        <Eyebrow>Hablemos</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">
           Contacto
         </h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">
           Estamos aquí para ayudarte a encontrar oportunidades estratégicas de desarrollo.
         </p>
       </section>
 
-      {/* CONTACT INFO */}
-      <section className="py-20 px-8 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          <h3 className="text-xl font-serif font-bold mb-4 text-[#C9A86A]">
-            WhatsApp
-          </h3>
-          <p className="text-gray-300">
-            <a href="https://wa.me/524425088204" target="_blank" className="text-[#C9A86A]">
+      <section className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-6 pb-16 md:grid-cols-3 md:px-10">
+        <Card className="flex items-start gap-4">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+            <PhoneIcon />
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-serif text-lg font-semibold text-charcoal">WhatsApp</h3>
+            <a
+              href="https://wa.me/524425088204"
+              className="mt-1 block text-sm text-ink hover:text-teal-600"
+            >
               +52 442 508 8204
             </a>
-          </p>
-        </div>
+          </div>
+        </Card>
 
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          <h3 className="text-xl font-serif font-bold mb-4 text-[#C9A86A]">
-            Correo
-          </h3>
-          <p className="text-gray-300">
-            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-[#C9A86A]">
+        <Card className="flex items-start gap-4">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+            <MailIcon />
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-serif text-lg font-semibold text-charcoal">Correo</h3>
+            <a
+              href="mailto:tonatiuhcervantes@ginkgomx.com"
+              className="mt-1 block break-words text-sm text-ink hover:text-teal-600"
+            >
               tonatiuhcervantes@ginkgomx.com
             </a>
-          </p>
-        </div>
+          </div>
+        </Card>
 
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          <h3 className="text-xl font-serif font-bold mb-4 text-[#C9A86A]">
-            Instagram
-          </h3>
-          <p className="text-gray-300">
+        <Card className="flex items-start gap-4">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+            <InstagramIcon />
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-serif text-lg font-semibold text-charcoal">Instagram</h3>
             <a
               href="https://www.instagram.com/ginkgomex?igsh=MXVpd3h0dGNhdHh0cQ=="
               target="_blank"
-              className="text-[#C9A86A]"
+              rel="noopener noreferrer"
+              className="mt-1 block text-sm text-ink hover:text-teal-600"
             >
               @ginkgomex
             </a>
-          </p>
-        </div>
+          </div>
+        </Card>
       </section>
 
-      {/* FORMULARIO */}
-      <section id="formulario" className="py-20 px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          Solicitar información
-        </h2>
-        <p className="text-gray-400 mb-12">
-          Cuéntanos tus necesidades y te presentaremos oportunidades alineadas con tu perfil.
-        </p>
-
-        <form className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Nombre" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Correo" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Teléfono" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Empresa (opcional)" />
-          <textarea
-            className="bg-[#0D0D0D] p-3 rounded text-white md:col-span-2"
-            placeholder="Cuéntanos qué tipo de oportunidad buscas"
-            rows={4}
-          ></textarea>
-
-          <button className="bg-[#C9A86A] text-black font-semibold py-3 rounded md:col-span-2">
-            Enviar solicitud
-          </button>
-        </form>
+      <section id="formulario" className="bg-paper px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif text-3xl font-semibold text-charcoal">
+            Solicitar información
+          </h2>
+          <p className="mt-4 text-ink">
+            Cuéntanos tus necesidades y te presentaremos oportunidades alineadas con tu perfil.
+          </p>
+          <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
+            <LeadForm locale="es" source="ES - Contacto" id="lead-contacto" />
+          </div>
+        </div>
       </section>
     </main>
   );

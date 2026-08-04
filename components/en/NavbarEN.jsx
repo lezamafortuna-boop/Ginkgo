@@ -1,21 +1,68 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import LanguageSwitcher from "../LanguageSwitcher";
 
+const links = [
+  { href: "/en/opportunities", label: "Opportunities" },
+  { href: "/en/services", label: "Services" },
+  { href: "/en/insights", label: "Insights" },
+  { href: "/en/about", label: "About" },
+  { href: "/en/contact", label: "Contact" },
+];
+
 export default function NavbarEN() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="bg-black text-white border-b border-[#333] px-8 py-4 flex items-center justify-between">
-      <a href="/en" className="font-serif text-xl font-bold">
-        Ginkgo
-      </a>
+    <header className="sticky top-0 z-40 border-b border-border bg-paper/95 backdrop-blur">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
+        <Link href="/en" className="flex items-center gap-2 font-serif text-xl font-semibold tracking-wide text-charcoal">
+          <Image src="/images/ginkgo-icon.png" alt="" width={32} height={36} className="h-8 w-auto" priority />
+          Ginkgo
+        </Link>
 
-      <div className="flex items-center gap-6 text-sm">
-        <a href="/en/opportunities" className="hover:text-[#C9A86A]">Opportunities</a>
-        <a href="/en/services" className="hover:text-[#C9A86A]">Services</a>
-        <a href="/en/insights" className="hover:text-[#C9A86A]">Insights</a>
-        <a href="/en/about" className="hover:text-[#C9A86A]">About</a>
-        <a href="/en/contact" className="hover:text-[#C9A86A]">Contact</a>
+        <div className="hidden items-center gap-8 text-sm font-medium md:flex">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className="text-charcoal transition-colors hover:text-teal-600">
+              {link.label}
+            </Link>
+          ))}
+          <LanguageSwitcher />
+        </div>
 
-        <LanguageSwitcher />
-      </div>
-    </nav>
+        <div className="flex items-center gap-4 md:hidden">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="text-charcoal"
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
+      </nav>
+
+      {open && (
+        <div className="border-t border-border bg-paper px-6 py-4 md:hidden">
+          <div className="flex flex-col gap-4 text-sm font-medium">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="text-charcoal hover:text-teal-600"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
   );
 }

@@ -1,30 +1,28 @@
-export default function ProcessEN() {
-  const steps = [
-    "We analyze the land’s development potential.",
-    "We design the commercial strategy.",
-    "We connect with investors and developers.",
-    "We support the negotiation process.",
-  ];
+import Eyebrow from "../ui/Eyebrow";
 
+const steps = [
+  "We analyze the land's development potential.",
+  "We design the commercial strategy.",
+  "We connect with investors and developers.",
+  "We support the negotiation process.",
+];
+
+export default function ProcessEN() {
   return (
-    <section className="bg-[#0D0D0D] text-white py-20 px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-serif font-bold mb-12">
+    <section className="bg-cream px-6 py-20 md:px-10">
+      <div className="mx-auto max-w-5xl text-center">
+        <Eyebrow>How we work</Eyebrow>
+        <h2 className="mt-2 font-serif text-3xl font-semibold text-charcoal md:text-4xl">
           Our Process
         </h2>
 
-        <div className="flex flex-col items-center gap-10">
+        <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-4">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="bg-[#1A1A1A] px-6 py-4 rounded-lg border border-[#333] shadow-lg">
-                <p className="text-xl text-gray-200">{step}</p>
+            <div key={step} className="flex flex-col items-center">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-teal-600 font-serif text-lg text-teal-600">
+                {index + 1}
               </div>
-
-              {index < steps.length - 1 && (
-                <div className="text-[#C9A86A] text-3xl font-bold my-4">
-                  ↓
-                </div>
-              )}
+              <p className="text-ink">{step}</p>
             </div>
           ))}
         </div>

@@ -1,16 +1,30 @@
-import NavbarES from "@/components/NavbarES";
-import Footer from "@/components/Footer";
-import FixedCTA from "@/components/FixedCTA";
+import { Fraunces, Inter } from "next/font/google";
+import "./globals.css";
 
-export default function LayoutES({ children }) {
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+export const metadata = {
+  metadataBase: new URL("https://ginkgomx.com"),
+  title: {
+    default: "GINKGO — Strategic Land Opportunities in Mexico",
+    template: "%s | GINKGO",
+  },
+};
+
+export default function RootLayout({ children }) {
   return (
-    <html lang="es">
-      <body className="bg-[#0D0D0D] text-white">
-        <NavbarES />
-        {children}
-        <Footer />
-        <FixedCTA />
-      </body>
+    <html className={`${fraunces.variable} ${inter.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

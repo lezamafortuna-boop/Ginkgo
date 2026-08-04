@@ -1,58 +1,60 @@
+import { notFound } from "next/navigation";
 import { insights } from "@/data/insights";
+import Photo from "@/components/ui/Photo";
+import LeadForm from "@/components/LeadForm";
 
-export default function InsightDetailEN({ params }) {
-  const article = insights.find((i) => i.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const article = insights.find((i) => i.slug === slug);
+  if (!article) return {};
+  return {
+    title: article.title_en,
+    description: article.excerpt_en,
+    alternates: {
+      canonical: `/en/insights/${slug}`,
+      languages: { "es-MX": `/es/insights/${slug}`, "en-US": `/en/insights/${slug}` },
+    },
+  };
+}
 
-  if (!article) {
-    return <div className="text-white p-20">Article not found.</div>;
-  }
+export default async function InsightDetailEN({ params }) {
+  const { slug } = await params;
+  const article = insights.find((i) => i.slug === slug);
+  if (!article) notFound();
 
   return (
-    <main className="bg-[#0D0D0D] text-white">
-
-      {/* HERO */}
-      <section
-        className="relative h-[50vh] flex items-center justify-center"
-        style={{ backgroundImage: `url(${article.image})` }}
-      >
-        <div className="absolute inset-0 bg-black/60"></div>
-        <h1 className="relative z-10 text-4xl font-serif font-bold text-center px-4">
-          {article.title}
+    <main className="bg-cream">
+      <section className="relative flex h-[50vh] items-center justify-center overflow-hidden">
+        <Photo src={article.image} alt={article.title_en} className="absolute inset-0" priority />
+        <div className="absolute inset-0 bg-charcoal/50" />
+        <h1 className="relative z-10 px-4 text-center font-serif text-4xl font-semibold text-white">
+          {article.title_en}
         </h1>
       </section>
 
-      {/* META */}
-      <section className="py-12 px-8 max-w-4xl mx-auto">
-        <p className="text-[#C9A86A] font-semibold">{article.category}</p>
-        <p className="text-gray-400 mb-6">{article.date}</p>
+      <section className="mx-auto max-w-4xl px-6 py-12 md:px-10">
+        <p className="font-semibold uppercase tracking-wide text-teal-600">{article.category_en}</p>
+        <p className="text-muted">{article.date_en}</p>
       </section>
 
-      {/* CONTENT */}
-      <section className="px-8 pb-20 max-w-4xl mx-auto">
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] leading-relaxed text-gray-300 whitespace-pre-line">
-          {article.content}
+      <section className="mx-auto max-w-4xl px-6 pb-20 md:px-10">
+        <div className="whitespace-pre-line rounded-lg border border-border bg-paper p-8 leading-relaxed text-ink shadow-sm">
+          {article.content_en}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-8 max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-serif font-bold mb-6">
-          Looking for opportunities aligned with these trends?
-        </h2>
-        <p className="text-gray-400 mb-12">
-          Tell us your requirements and we will present strategic options.
-        </p>
-
-        <form className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Name" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Email" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Phone" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Company (optional)" />
-
-          <button className="bg-[#C9A86A] text-black font-semibold py-3 rounded md:col-span-2">
-            Request information
-          </button>
-        </form>
+      <section id="formEN" className="bg-paper px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif text-3xl font-semibold text-charcoal">
+            Looking for opportunities aligned with these trends?
+          </h2>
+          <p className="mt-4 text-ink">
+            Tell us your requirements and we will present strategic options.
+          </p>
+          <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
+            <LeadForm locale="en" source={`EN - Insight ${article.title_en}`} id="lead-insight" />
+          </div>
+        </div>
       </section>
     </main>
   );

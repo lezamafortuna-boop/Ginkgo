@@ -1,112 +1,115 @@
+import { notFound } from "next/navigation";
 import { opportunities } from "@/data/opportunities";
+import Photo from "@/components/ui/Photo";
+import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
+import LeadForm from "@/components/LeadForm";
 
-export default function OpportunityDetailEN({ params }) {
-  const opportunity = opportunities.find((op) => op.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const opportunity = opportunities.find((op) => op.slug === slug);
+  if (!opportunity) return {};
+  return {
+    title: opportunity.name_en,
+    description: opportunity.developmentPotential_en?.slice(0, 155),
+    alternates: {
+      canonical: `/en/opportunities/${slug}`,
+      languages: { "es-MX": `/es/oportunidades/${slug}`, "en-US": `/en/opportunities/${slug}` },
+    },
+  };
+}
 
-  if (!opportunity) {
-    return <div className="text-white p-20">Opportunity not found.</div>;
-  }
+export default async function OpportunityDetailEN({ params }) {
+  const { slug } = await params;
+  const opportunity = opportunities.find((op) => op.slug === slug);
+  if (!opportunity) notFound();
 
   return (
-    <main className="bg-[#0D0D0D] text-white">
-
-      {/* HERO */}
-      <section
-        className="relative h-[60vh] flex items-center justify-center"
-        style={{ backgroundImage: `url(${opportunity.heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/60"></div>
-        <h1 className="relative z-10 text-5xl font-serif font-bold">
-          {opportunity.name}
+    <main className="bg-cream">
+      <section className="relative flex h-[60vh] items-center justify-center overflow-hidden">
+        <Photo src={opportunity.heroImage} alt={opportunity.name_en} className="absolute inset-0" priority />
+        <div className="absolute inset-0 bg-charcoal/50" />
+        <h1 className="relative z-10 px-4 text-center font-serif text-4xl font-semibold text-white md:text-5xl">
+          {opportunity.name_en}
         </h1>
       </section>
 
-      {/* ESSENTIAL INFO */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-8">Essential Information</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          <p><strong>Surface:</strong> {opportunity.surface}</p>
-          <p><strong>Land Use:</strong> {opportunity.vocation}</p>
-          <p><strong>Availability:</strong> {opportunity.availability}</p>
-        </div>
+      <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
+        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
+          Essential Information
+        </h2>
+        <Card className="grid grid-cols-1 gap-6 text-ink md:grid-cols-3">
+          <p>
+            <strong className="text-charcoal">Surface:</strong> {opportunity.surface}
+          </p>
+          <p>
+            <strong className="text-charcoal">Land use:</strong> {opportunity.vocation_en}
+          </p>
+          <p>
+            <strong className="text-charcoal">Availability:</strong> {opportunity.availability_en}
+          </p>
+        </Card>
       </section>
 
-      {/* WHY THIS OPPORTUNITY */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-8">
+      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
           Why This Opportunity?
         </h2>
-
-        <ul className="space-y-4 text-gray-300">
-          {opportunity.reasons.map((reason, i) => (
-            <li key={i} className="bg-[#1A1A1A] p-6 rounded-lg border border-[#333]">
+        <ul className="space-y-4">
+          {opportunity.reasons_en.map((reason) => (
+            <li key={reason} className="rounded-lg border border-border bg-paper p-6 text-ink shadow-sm">
               {reason}
             </li>
           ))}
         </ul>
       </section>
 
-      {/* LOCATION */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-8">Location</h2>
-
-        <div className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          <img
-            src={opportunity.mapImage}
-            className="w-full h-80 object-cover rounded mb-6"
-          />
-
-          <ul className="space-y-2 text-gray-300">
-            {opportunity.distances.map((dist, i) => (
-              <li key={i}>{dist}</li>
+      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Location</h2>
+        <Card className="p-0 overflow-hidden">
+          <Photo src={opportunity.mapImage} alt={`Map of ${opportunity.name_en}`} className="h-80 w-full" />
+          <ul className="space-y-2 p-8 text-ink">
+            {opportunity.distances_en.map((dist) => (
+              <li key={dist}>{dist}</li>
             ))}
           </ul>
-        </div>
+        </Card>
       </section>
 
-      {/* DEVELOPMENT POTENTIAL */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-8">
+      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
           Development Potential
         </h2>
-
-        <p className="text-gray-300 leading-relaxed bg-[#1A1A1A] p-8 rounded-lg border border-[#333]">
-          {opportunity.developmentPotential}
+        <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed text-ink shadow-sm">
+          {opportunity.developmentPotential_en}
         </p>
       </section>
 
-      {/* TECHNICAL SHEET */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-8">
+      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
           Technical Specifications
         </h2>
-
-        <a
-          href={opportunity.techSheet}
-          target="_blank"
-          className="px-6 py-3 bg-[#C9A86A] text-black font-semibold rounded"
-        >
+        <Button href={opportunity.techSheet} target="_blank" rel="noopener noreferrer">
           Download Technical Sheet
-        </a>
+        </Button>
       </section>
 
-      {/* DOSSIER DOWNLOAD */}
-      <section className="py-20 px-8 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-serif font-bold mb-8">
-          Download the Dossier
-        </h2>
-
-        <form className="bg-[#1A1A1A] p-8 rounded-lg border border-[#333] grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Name" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Email" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Phone" />
-          <input className="bg-[#0D0D0D] p-3 rounded text-white" placeholder="Company (optional)" />
-
-          <button className="bg-[#C9A86A] text-black font-semibold py-3 rounded md:col-span-2">
-            Download Dossier
-          </button>
-        </form>
+      <section id="dossier" className="bg-paper px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif text-3xl font-semibold text-charcoal">
+            Download the Dossier
+          </h2>
+          <p className="mt-4 text-ink">
+            Leave your details and we'll send you the full dossier for this opportunity.
+          </p>
+          <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
+            <LeadForm
+              locale="en"
+              source={`EN - Dossier ${opportunity.name_en}`}
+              id="lead-dossier"
+            />
+          </div>
+        </div>
       </section>
     </main>
   );
