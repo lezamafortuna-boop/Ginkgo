@@ -19,9 +19,12 @@ export default function NavbarEN() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-paper/95 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
-        <Link href="/en" className="flex items-center gap-2 font-serif text-xl font-semibold tracking-wide text-charcoal">
-          <Image src="/images/ginkgo-icon.png" alt="" width={32} height={36} className="h-8 w-auto" priority />
-          Ginkgo
+        <Link href="/en" className="flex items-center">
+          <span className="flex items-center rounded-md bg-[#0c213e] px-3 py-2">
+            <span className="relative h-7 w-[54px] shrink-0">
+              <Image src="/images/ginkgo-logo.png" alt="Ginkgo" fill sizes="54px" className="object-contain" priority />
+            </span>
+          </span>
         </Link>
 
         <div className="hidden items-center gap-8 text-sm font-medium md:flex">

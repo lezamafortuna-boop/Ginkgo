@@ -47,24 +47,6 @@ export default function NosotrosES() {
         </Card>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16 md:px-10">
-        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">
-          Una experiencia diseñada para convertir
-        </h2>
-        <Card className="text-ink">
-          <p className="mb-6 leading-relaxed">
-            La web no es un sitio institucional. Es un embudo de conversión. Cada sección está
-            diseñada para llevar al usuario a solicitar información.
-          </p>
-          <ul className="list-inside list-disc space-y-3">
-            <li>Botón fijo de "Solicitar información".</li>
-            <li>CTAs al terminar cada sección.</li>
-            <li>Formularios integrados en puntos estratégicos.</li>
-            <li>Contenido claro, directo y orientado a la acción.</li>
-          </ul>
-        </Card>
-      </section>
-
       <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
         <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">
           Cómo trabajamos

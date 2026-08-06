@@ -49,9 +49,10 @@ export default function ContactEN() {
             <h3 className="font-serif text-lg font-semibold text-charcoal">Email</h3>
             <a
               href="mailto:tonatiuhcervantes@ginkgomx.com"
-              className="mt-1 block break-words text-sm text-ink hover:text-teal-600"
+              title="tonatiuhcervantes@ginkgomx.com"
+              className="mt-1 block text-sm text-ink hover:text-teal-600"
             >
-              tonatiuhcervantes@ginkgomx.com
+              Send an email
             </a>
           </div>
         </Card>

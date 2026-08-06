@@ -46,24 +46,6 @@ export default function AboutEN() {
         </Card>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16 md:px-10">
-        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">
-          A Conversion-Driven Experience
-        </h2>
-        <Card className="text-ink">
-          <p className="mb-6 leading-relaxed">
-            The website is not an institutional site. It is a conversion funnel. Every section is
-            designed to lead the user to request information.
-          </p>
-          <ul className="list-inside list-disc space-y-3">
-            <li>Fixed "Request Information" button.</li>
-            <li>CTAs at the end of every section.</li>
-            <li>Forms integrated at strategic points.</li>
-            <li>Clear, direct, action-oriented content.</li>
-          </ul>
-        </Card>
-      </section>
-
       <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
         <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">
           How We Work

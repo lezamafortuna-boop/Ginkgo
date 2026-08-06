@@ -3,7 +3,17 @@
     "allow": [
       "Bash(node _make-favicon.mjs)",
       "Bash(rm _make-favicon.mjs _crop-icon.mjs _analyze.mjs)",
-      "Bash(node _make-og.mjs)"
+      "Bash(node _make-og.mjs)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git ls-tree *)",
+      "Bash(sort -k4 -n -r)",
+      "Bash(git push *)",
+      "Bash(node -e ' *)",
+      "Bash(node _pad-icon.mjs)",
+      "Bash(node _preview-badge.mjs)",
+      "Bash(curl -s http://localhost:3000/es/nosotros)",
+      "Bash(curl -s http://localhost:3000/es/contacto)"
     ]
   }
 }
