@@ -19,7 +19,7 @@ export default function ProcessEN() {
         <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-4">
           {steps.map((step, index) => (
             <div key={step} className="flex flex-col items-center">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-teal-600 font-serif text-lg text-teal-600">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gold font-serif text-lg font-semibold text-charcoal">
                 {index + 1}
               </div>
               <p className="text-ink">{step}</p>

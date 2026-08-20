@@ -32,7 +32,7 @@ export default function InsightsES() {
             <Card key={article.slug} className="flex flex-col overflow-hidden p-0">
               <Photo src={article.image} alt={article.title_es} className="h-48 w-full" />
               <div className="flex flex-1 flex-col p-6">
-                <span className="text-xs font-semibold uppercase tracking-wide text-teal-600">
+                <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
                   {article.category_es}
                 </span>
                 <h3 className="mt-2 font-serif text-xl font-semibold text-charcoal">

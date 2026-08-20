@@ -28,7 +28,7 @@ export default function FeaturedOpportunitiesES() {
                 <ul className="mt-4 space-y-1 text-sm text-ink">
                   {op.advantages_es.slice(0, 2).map((adv) => (
                     <li key={adv} className="flex gap-2">
-                      <span className="text-teal-600">—</span>
+                      <span className="text-brand-600">—</span>
                       {adv}
                     </li>
                   ))}

@@ -61,7 +61,7 @@ export default function LeadForm({ locale = "es", source, id = "lead-form", clas
   }
 
   const inputClasses =
-    "w-full rounded-md border border-border bg-paper px-4 py-3 text-charcoal placeholder:text-muted focus:border-teal-600 focus:outline-none";
+    "w-full rounded-md border border-border bg-paper px-4 py-3 text-charcoal placeholder:text-muted focus:border-brand-600 focus:outline-none";
   const labelClasses = "mb-1.5 block text-xs font-semibold uppercase tracking-wide text-muted";
 
   return (
@@ -158,7 +158,7 @@ export default function LeadForm({ locale = "es", source, id = "lead-form", clas
         <Button type="submit" disabled={status === "sending"}>
           {status === "sending" ? t.sending : t.submit}
         </Button>
-        {status === "success" && <p className="mt-4 text-sm text-teal-700">{t.success}</p>}
+        {status === "success" && <p className="mt-4 text-sm text-brand-700">{t.success}</p>}
         {status === "error" && <p className="mt-4 text-sm text-red-600">{t.error}</p>}
       </div>
     </form>

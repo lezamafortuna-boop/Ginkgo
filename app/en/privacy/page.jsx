@@ -32,7 +32,7 @@ export default function PrivacyEN() {
           </p>
           <p>
             Users may request the update or deletion of their data by writing to{" "}
-            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-teal-600 hover:underline">
+            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-brand-600 hover:underline">
               tonatiuhcervantes@ginkgomx.com
             </a>
             .

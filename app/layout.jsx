@@ -1,16 +1,16 @@
-import { Fraunces, Inter } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  variable: "--font-heading",
+  weight: ["500", "600", "700"],
 });
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata = {
@@ -23,7 +23,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html className={`${fraunces.variable} ${inter.variable}`}>
+    <html className={`${montserrat.variable} ${poppins.variable}`}>
       <body>{children}</body>
     </html>
   );

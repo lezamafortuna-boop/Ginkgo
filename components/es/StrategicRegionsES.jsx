@@ -25,7 +25,7 @@ export default function StrategicRegionsES() {
             >
               <Photo src={region.heroImage} alt={region.name_es} className="h-56 w-full" />
               <div className="p-6">
-                <h3 className="font-serif text-xl font-semibold text-charcoal group-hover:text-teal-600">
+                <h3 className="font-serif text-xl font-semibold text-charcoal group-hover:text-brand-600">
                   {region.name_es}
                 </h3>
                 <p className="mt-2 line-clamp-2 text-sm text-ink">{region.description_es}</p>

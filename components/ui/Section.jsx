@@ -1,7 +1,7 @@
 const backgrounds = {
   cream: "bg-cream text-charcoal",
   paper: "bg-paper text-charcoal",
-  teal: "bg-teal-600 text-white",
+  teal: "bg-brand-600 text-white",
   charcoal: "bg-charcoal text-white",
 };
 

@@ -4,20 +4,24 @@
   /* Neutrals */
   --color-cream: #faf8f4;
   --color-paper: #ffffff;
-  --color-charcoal: #23262b;
+  --color-charcoal: #0c1a2f;
   --color-ink: #3a3d42;
   --color-muted: #6b6f76;
   --color-border: #e7e2d8;
 
-  /* Brand accent — deep teal, per Keri White reference */
-  --color-teal-50: #eef5f4;
-  --color-teal-100: #d7e7e4;
-  --color-teal-400: #3e8e88;
-  --color-teal-600: #1f5c57;
-  --color-teal-700: #164541;
+  /* Brand — Ginkgo identity: dark navy primary (charcoal, above), institutional blue secondary */
+  --color-brand-50: #eef2f7;
+  --color-brand-100: #d7e0ea;
+  --color-brand-400: #4a6d99;
+  --color-brand-600: #183863;
+  --color-brand-700: #102846;
 
-  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Accent — used sparingly for small highlights, never as body text (fails contrast on light bg) */
+  --color-gold: #e4c745;
+  --color-gold-700: #8a751f;
+
+  --font-serif: var(--font-heading), "Montserrat", Georgia, sans-serif;
+  --font-sans: var(--font-body), "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 html {
@@ -31,8 +35,8 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-teal-100);
-  color: var(--color-teal-700);
+  background-color: var(--color-brand-100);
+  color: var(--color-brand-700);
 }
 
 /* Consistent visible focus ring for keyboard users, since default outline
@@ -41,6 +45,6 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--color-teal-600);
+  outline: 2px solid var(--color-brand-600);
   outline-offset: 2px;
 }

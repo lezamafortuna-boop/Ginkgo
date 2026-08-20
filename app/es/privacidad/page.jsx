@@ -36,7 +36,7 @@ export default function PrivacidadES() {
           </p>
           <p>
             El usuario puede solicitar la actualización o eliminación de sus datos escribiendo a{" "}
-            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-teal-600 hover:underline">
+            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-brand-600 hover:underline">
               tonatiuhcervantes@ginkgomx.com
             </a>
             .

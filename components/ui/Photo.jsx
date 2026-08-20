@@ -22,11 +22,11 @@ export default function Photo({
   if (!exists) {
     return (
       <div
-        className={`flex items-center justify-center bg-gradient-to-br from-teal-100 via-cream to-teal-50 ${className}`}
+        className={`flex items-center justify-center bg-gradient-to-br from-brand-100 via-cream to-brand-50 ${className}`}
         role="img"
         aria-label={alt}
       >
-        <span className="font-serif text-sm uppercase tracking-[0.3em] text-teal-600/50">Ginkgo</span>
+        <span className="font-serif text-sm uppercase tracking-[0.3em] text-brand-600/50">Ginkgo</span>
       </div>
     );
   }

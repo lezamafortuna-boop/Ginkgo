@@ -32,7 +32,7 @@ export default function WhyGinkgoES() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           {items.map((item) => (
             <Card key={item.title}>
-              <h3 className="font-serif text-xl font-semibold text-teal-600">{item.title}</h3>
+              <h3 className="font-serif text-xl font-semibold text-brand-600">{item.title}</h3>
               <p className="mt-3 leading-relaxed text-ink">{item.text}</p>
             </Card>
           ))}

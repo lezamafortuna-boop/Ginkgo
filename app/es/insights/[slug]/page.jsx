@@ -33,7 +33,7 @@ export default async function InsightDetailES({ params }) {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-12 md:px-10">
-        <p className="font-semibold uppercase tracking-wide text-teal-600">{article.category_es}</p>
+        <p className="font-semibold uppercase tracking-wide text-brand-600">{article.category_es}</p>
         <p className="text-muted">{article.date_es}</p>
       </section>
 

@@ -43,7 +43,7 @@ export default function LanguageSwitcher({ className = "" }) {
   return (
     <Link
       href={targetPath}
-      className={`rounded-md border border-teal-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-teal-600 transition-colors hover:bg-teal-600 hover:text-white ${className}`}
+      className={`rounded-md border border-brand-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-600 transition-colors hover:bg-brand-600 hover:text-white ${className}`}
     >
       {isSpanish ? "EN" : "ES"}
     </Link>

@@ -27,14 +27,14 @@ export default function ContactoES() {
 
       <section className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-6 pb-16 md:grid-cols-3 md:px-10">
         <Card className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
             <PhoneIcon />
           </div>
           <div className="min-w-0">
             <h3 className="font-serif text-lg font-semibold text-charcoal">WhatsApp</h3>
             <a
               href="https://wa.me/524425088204"
-              className="mt-1 block text-sm text-ink hover:text-teal-600"
+              className="mt-1 block text-sm text-ink hover:text-brand-600"
             >
               +52 442 508 8204
             </a>
@@ -42,7 +42,7 @@ export default function ContactoES() {
         </Card>
 
         <Card className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
             <MailIcon />
           </div>
           <div className="min-w-0">
@@ -50,7 +50,7 @@ export default function ContactoES() {
             <a
               href="mailto:tonatiuhcervantes@ginkgomx.com"
               title="tonatiuhcervantes@ginkgomx.com"
-              className="mt-1 block text-sm text-ink hover:text-teal-600"
+              className="mt-1 block text-sm text-ink hover:text-brand-600"
             >
               Enviar correo
             </a>
@@ -58,7 +58,7 @@ export default function ContactoES() {
         </Card>
 
         <Card className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-600">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
             <InstagramIcon />
           </div>
           <div className="min-w-0">
@@ -67,7 +67,7 @@ export default function ContactoES() {
               href="https://www.instagram.com/ginkgomex?igsh=MXVpd3h0dGNhdHh0cQ=="
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 block text-sm text-ink hover:text-teal-600"
+              className="mt-1 block text-sm text-ink hover:text-brand-600"
             >
               @ginkgomex
             </a>

@@ -6,7 +6,7 @@ export default function FooterEN() {
   return (
     <footer className="border-t border-border bg-paper px-6 py-16 md:px-10">
       <div className="mx-auto mb-12 flex max-w-6xl items-center">
-        <span className="flex items-center rounded-md bg-[#0c213e] px-3 py-2">
+        <span className="flex items-center rounded-md bg-charcoal px-3 py-2">
           <span className="relative h-6 w-[46px] shrink-0">
             <Image src="/images/ginkgo-logo.png" alt="Ginkgo" fill sizes="46px" className="object-contain" />
           </span>
@@ -15,20 +15,20 @@ export default function FooterEN() {
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-3">
         <div>
-          <h3 className="mb-4 font-serif text-lg font-semibold text-teal-600">Contact</h3>
+          <h3 className="mb-4 font-serif text-lg font-semibold text-brand-600">Contact</h3>
           <ul className="space-y-3 text-sm text-ink">
             <li className="flex items-start gap-2">
-              <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
-              <a href="https://wa.me/524425088204" className="hover:text-teal-600">
+              <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
+              <a href="https://wa.me/524425088204" className="hover:text-brand-600">
                 +52 442 508 8204
               </a>
             </li>
             <li className="flex items-start gap-2">
-              <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+              <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
               <a
                 href="mailto:tonatiuhcervantes@ginkgomx.com"
                 title="tonatiuhcervantes@ginkgomx.com"
-                className="hover:text-teal-600"
+                className="hover:text-brand-600"
               >
                 Send an email
               </a>
@@ -37,15 +37,15 @@ export default function FooterEN() {
         </div>
 
         <div>
-          <h3 className="mb-4 font-serif text-lg font-semibold text-teal-600">Follow us</h3>
+          <h3 className="mb-4 font-serif text-lg font-semibold text-brand-600">Follow us</h3>
           <ul className="space-y-3 text-sm text-ink">
             <li className="flex items-start gap-2">
-              <InstagramIcon className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+              <InstagramIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
               <a
                 href="https://www.instagram.com/ginkgomex"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-teal-600"
+                className="hover:text-brand-600"
               >
                 Instagram
               </a>
@@ -55,7 +55,7 @@ export default function FooterEN() {
                 href="https://www.linkedin.com/company/ginkgo-mx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-teal-600"
+                className="hover:text-brand-600"
               >
                 LinkedIn
               </a>
@@ -64,15 +64,15 @@ export default function FooterEN() {
         </div>
 
         <div>
-          <h3 className="mb-4 font-serif text-lg font-semibold text-teal-600">Legal</h3>
+          <h3 className="mb-4 font-serif text-lg font-semibold text-brand-600">Legal</h3>
           <ul className="space-y-2 text-sm text-ink">
             <li>
-              <Link href="/en/privacy" className="hover:text-teal-600">
+              <Link href="/en/privacy" className="hover:text-brand-600">
                 Privacy Notice
               </Link>
             </li>
             <li>
-              <Link href="/en/cookies" className="hover:text-teal-600">
+              <Link href="/en/cookies" className="hover:text-brand-600">
                 Cookie Policy
               </Link>
             </li>

@@ -11,7 +11,7 @@ export default function FixedCTA() {
   return (
     <Link
       href={target}
-      className="fixed bottom-6 right-6 z-50 rounded-md bg-teal-600 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-teal-700"
+      className="fixed bottom-6 right-6 z-50 rounded-md bg-brand-600 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-brand-700"
     >
       {isSpanish ? "Solicitar información" : "Request Information"}
     </Link>

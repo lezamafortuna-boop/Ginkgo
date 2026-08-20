@@ -20,7 +20,7 @@ export default function NavbarEN() {
     <header className="sticky top-0 z-40 border-b border-border bg-paper/95 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
         <Link href="/en" className="flex items-center">
-          <span className="flex items-center rounded-md bg-[#0c213e] px-3 py-2">
+          <span className="flex items-center rounded-md bg-charcoal px-3 py-2">
             <span className="relative h-7 w-[54px] shrink-0">
               <Image src="/images/ginkgo-logo.png" alt="Ginkgo" fill sizes="54px" className="object-contain" priority />
             </span>
@@ -29,7 +29,7 @@ export default function NavbarEN() {
 
         <div className="hidden items-center gap-8 text-sm font-medium md:flex">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="text-charcoal transition-colors hover:text-teal-600">
+            <Link key={link.href} href={link.href} className="text-charcoal transition-colors hover:text-brand-600">
               {link.label}
             </Link>
           ))}
@@ -58,7 +58,7 @@ export default function NavbarEN() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-charcoal hover:text-teal-600"
+                className="text-charcoal hover:text-brand-600"
               >
                 {link.label}
               </Link>
