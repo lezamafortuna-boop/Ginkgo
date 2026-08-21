@@ -1,7 +1,11 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
 import LeadForm from "@/components/LeadForm";
-import { MailIcon, PhoneIcon, InstagramIcon } from "@/components/ui/icons";
+import { MailIcon, WhatsAppIcon, InstagramIcon } from "@/components/ui/icons";
+import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, CONTACT_EMAIL } from "@/lib/contact";
+import { buildWhatsappUrl, GENERIC_MESSAGE } from "@/lib/whatsapp";
+
+const whatsappUrl = buildWhatsappUrl(WHATSAPP_NUMBER, GENERIC_MESSAGE.en);
 
 export const metadata = {
   title: "Contact",
@@ -28,15 +32,17 @@ export default function ContactEN() {
       <section className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-6 pb-16 md:grid-cols-3 md:px-10">
         <Card className="flex items-start gap-4">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
-            <PhoneIcon />
+            <WhatsAppIcon />
           </div>
           <div className="min-w-0">
             <h3 className="font-serif text-lg font-semibold text-charcoal">WhatsApp</h3>
             <a
-              href="https://wa.me/524425088204"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-1 block text-sm text-ink hover:text-brand-600"
             >
-              +52 442 508 8204
+              {WHATSAPP_DISPLAY}
             </a>
           </div>
         </Card>
@@ -48,8 +54,8 @@ export default function ContactEN() {
           <div className="min-w-0">
             <h3 className="font-serif text-lg font-semibold text-charcoal">Email</h3>
             <a
-              href="mailto:tonatiuhcervantes@ginkgomx.com"
-              title="tonatiuhcervantes@ginkgomx.com"
+              href={`mailto:${CONTACT_EMAIL}`}
+              title={CONTACT_EMAIL}
               className="mt-1 block text-sm text-ink hover:text-brand-600"
             >
               Send an email

@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MailIcon, PhoneIcon, InstagramIcon } from "../ui/icons";
+import { MailIcon, WhatsAppIcon, InstagramIcon } from "../ui/icons";
+import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/contact";
+import { buildWhatsappUrl, GENERIC_MESSAGE } from "@/lib/whatsapp";
+
+const whatsappUrl = buildWhatsappUrl(WHATSAPP_NUMBER, GENERIC_MESSAGE.es);
 
 export default function FooterES() {
   return (
@@ -18,16 +22,16 @@ export default function FooterES() {
           <h3 className="mb-4 font-serif text-lg font-semibold text-brand-600">Contacto</h3>
           <ul className="space-y-3 text-sm text-ink">
             <li className="flex items-start gap-2">
-              <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
-              <a href="https://wa.me/524425088204" className="hover:text-brand-600">
-                +52 442 508 8204
+              <WhatsAppIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-600">
+                WhatsApp — {WHATSAPP_DISPLAY}
               </a>
             </li>
             <li className="flex items-start gap-2">
               <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
               <a
-                href="mailto:tonatiuhcervantes@ginkgomx.com"
-                title="tonatiuhcervantes@ginkgomx.com"
+                href={`mailto:${CONTACT_EMAIL}`}
+                title={CONTACT_EMAIL}
                 className="hover:text-brand-600"
               >
                 Enviar correo
@@ -42,7 +46,7 @@ export default function FooterES() {
             <li className="flex items-start gap-2">
               <InstagramIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
               <a
-                href="https://www.instagram.com/ginkgomex"
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-brand-600"
@@ -52,7 +56,7 @@ export default function FooterES() {
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/company/ginkgo-mx"
+                href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-brand-600"
