@@ -3,7 +3,7 @@ export const opportunities = [
     slug: "queretaro-norte",
     name_es: "Querétaro Norte",
     name_en: "Querétaro North",
-    region: "bajio",
+    region: "santa-rosa-jauregui",
     featured: true,
     heroImage: "/opportunities/queretaro-norte/hero.jpg",
     image: "/opportunities/queretaro-norte/hero.jpg",
@@ -64,7 +64,7 @@ export const opportunities = [
     slug: "el-marques-industrial",
     name_es: "El Marqués Industrial",
     name_en: "El Marqués Industrial",
-    region: "bajio",
+    region: "el-marques",
     featured: true,
     heroImage: "/opportunities/el-marques-industrial/hero.jpg",
     image: "/opportunities/el-marques-industrial/hero.jpg",
@@ -122,15 +122,15 @@ export const opportunities = [
     techSheet: "/opportunities/el-marques-industrial/ficha-tecnica.pdf"
   },
   {
-    slug: "corredor-noroeste-mixto",
-    name_es: "Corredor Noroeste Mixto",
-    name_en: "Northwest Corridor Mixed-Use",
-    region: "noroeste",
+    slug: "corregidora-mixto",
+    name_es: "Corregidora Mixto",
+    name_en: "Corregidora Mixed-Use",
+    region: "corregidora",
     featured: true,
-    heroImage: "/opportunities/corredor-noroeste-mixto/hero.jpg",
-    image: "/opportunities/corredor-noroeste-mixto/hero.jpg",
-    city_es: "Corredor Noroeste",
-    city_en: "Northwest Corridor",
+    heroImage: "/opportunities/corregidora-mixto/hero.jpg",
+    image: "/opportunities/corregidora-mixto/hero.jpg",
+    city_es: "Corregidora, Qro.",
+    city_en: "Corregidora, Qro.",
     surface: "18 ha",
     vocation_es: "Mixto / Comercial",
     vocation_en: "Mixed-use / Commercial",
@@ -163,7 +163,7 @@ export const opportunities = [
       "Flat land, ready for planning."
     ],
 
-    mapImage: "/opportunities/corredor-noroeste-mixto/map.jpg",
+    mapImage: "/opportunities/corregidora-mixto/map.jpg",
     distances_es: [
       "A 6 min de la vialidad principal",
       "A 15 min del centro urbano más cercano",
@@ -180,6 +180,6 @@ export const opportunities = [
     developmentPotential_en:
       "Excellent option for mixed-use development with ground-floor retail and residential use on upper levels.",
 
-    techSheet: "/opportunities/corredor-noroeste-mixto/ficha-tecnica.pdf"
+    techSheet: "/opportunities/corregidora-mixto/ficha-tecnica.pdf"
   }
 ];
