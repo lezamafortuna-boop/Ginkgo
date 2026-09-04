@@ -12,6 +12,7 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
+    "@auth0/nextjs-auth0": "^4.28.0",
     "@sanity/client": "^8.5.0",
     "next": "^16.2.10",
     "react": "^19.2.7",

@@ -20,6 +20,10 @@
   --color-gold: #e4c745;
   --color-gold-700: #8a751f;
 
+  /* Admin panel surface — distinct from the public site's --color-cream so the
+     CRM reads as its own operational space, per the brand spec's "#f7f7f7". */
+  --color-admin-bg: #f7f7f7;
+
   --font-serif: var(--font-heading), "Montserrat", Georgia, sans-serif;
   --font-sans: var(--font-body), "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
