@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getRegionBySlug } from "@/lib/sanity/queries";
+import { getRegionBySlug, getRegionDocuments } from "@/lib/sanity/queries";
 import { toLegacyRegion } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -25,6 +25,7 @@ export default async function RegionDetailEN({ params }) {
   const { slug } = await params;
   const region = toLegacyRegion(await getRegionBySlug(slug));
   if (!region) notFound();
+  const documents = await getRegionDocuments(region.id);
 
   return (
     <main className="bg-cream">
@@ -65,6 +66,26 @@ export default async function RegionDetailEN({ params }) {
           className="h-96 w-full rounded-lg border border-border"
         />
       </section>
+
+      {documents.length > 0 && (
+        <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Documents</h2>
+          <ul className="space-y-3">
+            {documents.map((doc) => (
+              <li key={doc._id}>
+                <a
+                  href={doc.file?.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-border bg-paper p-6 text-ink shadow-sm hover:text-brand-600"
+                >
+                  {doc.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section id="formEN" className="bg-paper px-6 py-20 md:px-10">
         <div className="mx-auto max-w-3xl text-center">

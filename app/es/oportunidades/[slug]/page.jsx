@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getOpportunityBySlug } from "@/lib/sanity/queries";
+import { getOpportunityBySlug, getPropertyDocuments } from "@/lib/sanity/queries";
 import { toLegacyOpportunity } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
 import Card from "@/components/ui/Card";
@@ -26,6 +26,7 @@ export default async function OpportunityDetailES({ params }) {
   const { slug } = await params;
   const opportunity = toLegacyOpportunity(await getOpportunityBySlug(slug));
   if (!opportunity || opportunity.status !== "disponible") notFound();
+  const documents = await getPropertyDocuments(opportunity.id);
 
   return (
     <main className="bg-cream">
@@ -103,6 +104,26 @@ export default async function OpportunityDetailES({ params }) {
           <Button href={opportunity.techSheet} target="_blank" rel="noopener noreferrer">
             Descargar ficha técnica
           </Button>
+        </section>
+      )}
+
+      {documents.length > 0 && (
+        <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Documentos</h2>
+          <ul className="space-y-3">
+            {documents.map((doc) => (
+              <li key={doc._id}>
+                <a
+                  href={doc.file?.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-border bg-paper p-6 text-ink shadow-sm hover:text-brand-600"
+                >
+                  {doc.title}
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
