@@ -7,6 +7,8 @@ import InstagramFeedEN from "@/components/en/InstagramFeedEN";
 import CustomSearchFormEN from "@/components/en/CustomSearchFormEN";
 import ProjectCTAEN from "@/components/en/ProjectCTAEN";
 
+export const revalidate = 60;
+
 export default function HomeEN() {
   return (
     <>

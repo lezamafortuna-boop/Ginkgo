@@ -7,6 +7,8 @@ import InstagramFeedES from "@/components/es/InstagramFeedES";
 import CustomSearchFormES from "@/components/es/CustomSearchFormES";
 import ProjectCTAES from "@/components/es/ProjectCTAES";
 
+export const revalidate = 60;
+
 export default function HomeES() {
   return (
     <>

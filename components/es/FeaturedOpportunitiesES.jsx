@@ -1,11 +1,12 @@
-import { opportunities } from "@/data/opportunities";
+import { getFeaturedOpportunities } from "@/lib/sanity/queries";
+import { toLegacyOpportunity } from "@/lib/sanity/adapters";
 import Photo from "../ui/Photo";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
 import Eyebrow from "../ui/Eyebrow";
 
-export default function FeaturedOpportunitiesES() {
-  const featured = opportunities.filter((op) => op.featured).slice(0, 3);
+export default async function FeaturedOpportunitiesES() {
+  const featured = (await getFeaturedOpportunities()).map(toLegacyOpportunity).slice(0, 3);
 
   return (
     <section className="bg-cream px-6 py-20 md:px-10">

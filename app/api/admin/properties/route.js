@@ -7,6 +7,8 @@ import { sanityWriteClient } from "@/lib/sanity/writeClient";
 import { buildOpportunityFieldsFromFormData } from "@/lib/sanity/propertyFormData";
 
 function revalidateOpportunityPaths(slug) {
+  revalidatePath("/es");
+  revalidatePath("/en");
   revalidatePath("/es/oportunidades");
   revalidatePath("/en/opportunities");
   if (slug) {

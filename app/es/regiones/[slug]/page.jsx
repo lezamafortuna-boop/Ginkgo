@@ -1,12 +1,15 @@
 import { notFound } from "next/navigation";
-import { regions } from "@/data/regions";
+import { getRegionBySlug } from "@/lib/sanity/queries";
+import { toLegacyRegion } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
 import Eyebrow from "@/components/ui/Eyebrow";
 import LeadFormD from "@/components/LeadFormD";
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const region = regions.find((r) => r.slug === slug);
+  const region = toLegacyRegion(await getRegionBySlug(slug));
   if (!region) return {};
   return {
     title: region.name_es,
@@ -20,7 +23,7 @@ export async function generateMetadata({ params }) {
 
 export default async function RegionDetailES({ params }) {
   const { slug } = await params;
-  const region = regions.find((r) => r.slug === slug);
+  const region = toLegacyRegion(await getRegionBySlug(slug));
   if (!region) notFound();
 
   return (
@@ -39,19 +42,21 @@ export default async function RegionDetailES({ params }) {
         </p>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-10 md:px-10">
-        <Eyebrow>Por qué esta región</Eyebrow>
-        <h2 className="mt-2 mb-6 font-serif text-3xl font-semibold text-charcoal">
-          Ventajas Estratégicas
-        </h2>
-        <ul className="space-y-4">
-          {region.advantages_es.map((adv) => (
-            <li key={adv} className="rounded-lg border border-border bg-paper p-6 text-ink shadow-sm">
-              {adv}
-            </li>
-          ))}
-        </ul>
-      </section>
+      {region.advantages_es.length > 0 && (
+        <section className="mx-auto max-w-5xl px-6 pb-10 md:px-10">
+          <Eyebrow>Por qué esta región</Eyebrow>
+          <h2 className="mt-2 mb-6 font-serif text-3xl font-semibold text-charcoal">
+            Ventajas Estratégicas
+          </h2>
+          <ul className="space-y-4">
+            {region.advantages_es.map((adv) => (
+              <li key={adv} className="rounded-lg border border-border bg-paper p-6 text-ink shadow-sm">
+                {adv}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
         <Photo

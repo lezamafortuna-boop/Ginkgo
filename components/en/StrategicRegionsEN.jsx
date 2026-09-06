@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { regions } from "@/data/regions";
+import { getRegions } from "@/lib/sanity/queries";
+import { toLegacyRegion } from "@/lib/sanity/adapters";
 import Photo from "../ui/Photo";
 import Button from "../ui/Button";
 import Eyebrow from "../ui/Eyebrow";
 
-export default function StrategicRegionsEN() {
+export default async function StrategicRegionsEN() {
+  const regions = (await getRegions()).map(toLegacyRegion);
+
   return (
     <section className="bg-paper px-6 py-20 md:px-10">
       <div className="mx-auto max-w-6xl">

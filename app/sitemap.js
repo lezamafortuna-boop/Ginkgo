@@ -1,6 +1,5 @@
-import { regions } from "@/data/regions";
 import { insights } from "@/data/insights";
-import { opportunities } from "@/data/opportunities";
+import { getRegions, getPublicOpportunities } from "@/lib/sanity/queries";
 
 const BASE_URL = "https://ginkgomx.com";
 
@@ -16,7 +15,8 @@ const staticRoutes = [
   ["/es/cookies", "/en/cookies"],
 ];
 
-export default function sitemap() {
+export default async function sitemap() {
+  const [regions, opportunities] = await Promise.all([getRegions(), getPublicOpportunities()]);
   const entries = [];
 
   for (const [es, en] of staticRoutes) {
