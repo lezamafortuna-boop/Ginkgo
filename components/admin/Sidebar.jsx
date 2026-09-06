@@ -6,6 +6,7 @@ import { ROLES } from "@/lib/auth/roles";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", exact: true },
+  { href: "/admin/leads", label: "Leads" },
   { href: "/admin/propiedades", label: "Propiedades" },
   { href: "/admin/regiones", label: "Regiones" },
   { href: "/admin/mapas", label: "Mapas interactivos" },

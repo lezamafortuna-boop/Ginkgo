@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { regions } from "@/data/regions";
 import Photo from "@/components/ui/Photo";
 import Eyebrow from "@/components/ui/Eyebrow";
-import LeadForm from "@/components/LeadForm";
+import LeadFormD from "@/components/LeadFormD";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -70,7 +70,7 @@ export default async function RegionDetailES({ params }) {
             Cuéntanos tus necesidades y te presentaremos opciones alineadas con tu perfil.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm locale="es" source={`ES - Región ${region.name_es}`} id="lead-region" />
+            <LeadFormD locale="es" id="lead-region" />
           </div>
         </div>
       </section>

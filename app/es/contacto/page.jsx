@@ -1,6 +1,7 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
-import LeadForm from "@/components/LeadForm";
+import LeadFormD from "@/components/LeadFormD";
+import LeadFormB from "@/components/LeadFormB";
 import { MailIcon, WhatsAppIcon, InstagramIcon } from "@/components/ui/icons";
 import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, CONTACT_EMAIL } from "@/lib/contact";
 import { buildWhatsappUrl, GENERIC_MESSAGE } from "@/lib/whatsapp";
@@ -83,14 +84,28 @@ export default function ContactoES() {
 
       <section id="formulario" className="bg-paper px-6 py-20 md:px-10">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-serif text-3xl font-semibold text-charcoal">
-            Solicitar información
-          </h2>
+          <h2 className="font-serif text-3xl font-semibold text-charcoal">Contacto</h2>
           <p className="mt-4 text-ink">
             Cuéntanos tus necesidades y te presentaremos oportunidades alineadas con tu perfil.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm locale="es" source="ES - Contacto" id="lead-contacto" />
+            <LeadFormD locale="es" id="lead-contacto" />
+          </div>
+        </div>
+      </section>
+
+      <section id="promueve-tu-propiedad" className="bg-cream px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <Eyebrow>Propietarios</Eyebrow>
+          <h2 className="mt-2 font-serif text-3xl font-semibold text-charcoal">
+            ¿Tienes una propiedad que deseas comercializar?
+          </h2>
+          <p className="mt-4 text-ink">
+            Promueve tu propiedad con Ginkgo y nuestro equipo la evaluará para determinar si
+            se ajusta a nuestro perfil de comercialización.
+          </p>
+          <div className="mt-10 rounded-lg border border-border bg-paper p-8 text-left shadow-sm md:p-10">
+            <LeadFormB locale="es" id="lead-promover-propiedad" />
           </div>
         </div>
       </section>

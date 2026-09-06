@@ -1,6 +1,6 @@
 import Button from "../ui/Button";
 import Eyebrow from "../ui/Eyebrow";
-import LeadForm from "../LeadForm";
+import LeadFormD from "../LeadFormD";
 
 export default function HeroEN() {
   return (
@@ -46,7 +46,7 @@ export default function HeroEN() {
             Tell us what kind of project you're looking for and we'll follow up with aligned
             opportunities.
           </p>
-          <LeadForm locale="en" source="EN - Home" id="lead-hero-en" />
+          <LeadFormD locale="en" id="lead-hero-en" />
         </div>
       </section>
     </>

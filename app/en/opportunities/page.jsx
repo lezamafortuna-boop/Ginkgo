@@ -1,8 +1,11 @@
-import { opportunities } from "@/data/opportunities";
+import { getPublicOpportunities } from "@/lib/sanity/queries";
+import { toLegacyOpportunity } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Eyebrow from "@/components/ui/Eyebrow";
+
+export const revalidate = 60;
 
 export const metadata = {
   title: "Opportunities",
@@ -13,7 +16,10 @@ export const metadata = {
   },
 };
 
-export default function OpportunitiesListEN() {
+export default async function OpportunitiesListEN() {
+  const docs = await getPublicOpportunities();
+  const opportunities = docs.map(toLegacyOpportunity);
+
   return (
     <main className="min-h-screen bg-cream">
       <section className="px-6 py-20 text-center md:px-10">
@@ -43,6 +49,9 @@ export default function OpportunitiesListEN() {
             </Card>
           ))}
         </div>
+        {opportunities.length === 0 && (
+          <p className="text-center text-muted">New opportunities coming soon.</p>
+        )}
       </section>
     </main>
   );

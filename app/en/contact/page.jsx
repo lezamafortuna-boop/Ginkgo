@@ -1,6 +1,7 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
-import LeadForm from "@/components/LeadForm";
+import LeadFormD from "@/components/LeadFormD";
+import LeadFormB from "@/components/LeadFormB";
 import { MailIcon, WhatsAppIcon, InstagramIcon } from "@/components/ui/icons";
 import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, CONTACT_EMAIL } from "@/lib/contact";
 import { buildWhatsappUrl, GENERIC_MESSAGE } from "@/lib/whatsapp";
@@ -83,15 +84,29 @@ export default function ContactEN() {
 
       <section id="formEN" className="bg-paper px-6 py-20 md:px-10">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-serif text-3xl font-semibold text-charcoal">
-            Request Information
-          </h2>
+          <h2 className="font-serif text-3xl font-semibold text-charcoal">Contact</h2>
           <p className="mt-4 text-ink">
             Tell us your requirements and we will present opportunities aligned with your
             profile.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm locale="en" source="EN - Contact" id="lead-contact" />
+            <LeadFormD locale="en" id="lead-contact" />
+          </div>
+        </div>
+      </section>
+
+      <section id="promote-your-property" className="bg-cream px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <Eyebrow>Property owners</Eyebrow>
+          <h2 className="mt-2 font-serif text-3xl font-semibold text-charcoal">
+            Do you have a property you'd like to sell through Ginkgo?
+          </h2>
+          <p className="mt-4 text-ink">
+            Submit your property for evaluation — our team will review it to see if it fits
+            our commercialization profile.
+          </p>
+          <div className="mt-10 rounded-lg border border-border bg-paper p-8 text-left shadow-sm md:p-10">
+            <LeadFormB locale="en" id="lead-sell-property" />
           </div>
         </div>
       </section>

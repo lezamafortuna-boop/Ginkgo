@@ -1,5 +1,5 @@
 import Eyebrow from "../ui/Eyebrow";
-import LeadForm from "../LeadForm";
+import LeadFormC from "../LeadFormC";
 
 export default function CustomSearchFormEN() {
   return (
@@ -15,7 +15,7 @@ export default function CustomSearchFormEN() {
         </p>
 
         <div className="mt-10 rounded-lg border border-border bg-paper p-8 shadow-sm md:p-10">
-          <LeadForm locale="en" source="EN - Custom search" id="lead-search-en" />
+          <LeadFormC locale="en" id="lead-search-en" />
         </div>
       </div>
     </section>

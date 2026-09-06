@@ -8,7 +8,7 @@ export default defineConfig({
   name: 'default',
   title: 'Ginkgo',
 
-  projectId: 'fua075ju',
+  projectId: 'ts8eurd3',
   dataset: 'production',
 
   plugins: [structureTool({structure}), visionTool()],

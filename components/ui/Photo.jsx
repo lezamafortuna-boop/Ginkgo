@@ -17,7 +17,9 @@ export default function Photo({
   priority = false,
   sizes,
 }) {
-  const exists = Boolean(src) && fs.existsSync(path.join(process.cwd(), "public", src));
+  const isRemote = typeof src === "string" && /^https?:\/\//.test(src);
+  const exists =
+    isRemote || (Boolean(src) && fs.existsSync(path.join(process.cwd(), "public", src)));
 
   if (!exists) {
     return (

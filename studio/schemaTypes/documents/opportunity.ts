@@ -63,6 +63,13 @@ export const opportunity = defineType({
     }),
     defineField({name: 'vocation', title: 'Vocación', type: 'localeString', group: 'main'}),
     defineField({
+      name: 'briefDescription',
+      title: 'Descripción breve',
+      description: 'Resumen corto para tarjetas y vistas de lista. La descripción larga va en la pestaña Potencial.',
+      type: 'localeText',
+      group: 'main',
+    }),
+    defineField({
       name: 'availability',
       title: 'Disponibilidad (texto libre para la tarjeta)',
       description: 'Ej. "Disponible", "Próximamente". No controla visibilidad — usa el campo Estado para eso.',

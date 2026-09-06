@@ -1,13 +1,16 @@
 import { notFound } from "next/navigation";
-import { opportunities } from "@/data/opportunities";
+import { getOpportunityBySlug } from "@/lib/sanity/queries";
+import { toLegacyOpportunity } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
-import LeadForm from "@/components/LeadForm";
+import LeadFormA from "@/components/LeadFormA";
+
+export const revalidate = 60;
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const opportunity = opportunities.find((op) => op.slug === slug);
+  const opportunity = toLegacyOpportunity(await getOpportunityBySlug(slug));
   if (!opportunity) return {};
   return {
     title: opportunity.name_es,
@@ -21,8 +24,8 @@ export async function generateMetadata({ params }) {
 
 export default async function OpportunityDetailES({ params }) {
   const { slug } = await params;
-  const opportunity = opportunities.find((op) => op.slug === slug);
-  if (!opportunity) notFound();
+  const opportunity = toLegacyOpportunity(await getOpportunityBySlug(slug));
+  if (!opportunity || opportunity.status !== "disponible") notFound();
 
   return (
     <main className="bg-cream">
@@ -47,50 +50,61 @@ export default async function OpportunityDetailES({ params }) {
             <strong className="text-charcoal">Disponibilidad:</strong> {opportunity.availability_es}
           </p>
         </Card>
+        {opportunity.briefDescription_es && (
+          <p className="mt-8 text-lg leading-relaxed text-ink">{opportunity.briefDescription_es}</p>
+        )}
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
-        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
-          ¿Por qué esta oportunidad?
-        </h2>
-        <ul className="space-y-4">
-          {opportunity.reasons_es.map((reason) => (
-            <li key={reason} className="rounded-lg border border-border bg-paper p-6 text-ink shadow-sm">
-              {reason}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
-        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Ubicación</h2>
-        <Card className="p-0 overflow-hidden">
-          <Photo src={opportunity.mapImage} alt={`Mapa de ${opportunity.name_es}`} className="h-80 w-full" />
-          <ul className="space-y-2 p-8 text-ink">
-            {opportunity.distances_es.map((dist) => (
-              <li key={dist}>{dist}</li>
+      {opportunity.reasons_es.length > 0 && (
+        <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
+            ¿Por qué esta oportunidad?
+          </h2>
+          <ul className="space-y-4">
+            {opportunity.reasons_es.map((reason) => (
+              <li key={reason} className="rounded-lg border border-border bg-paper p-6 text-ink shadow-sm">
+                {reason}
+              </li>
             ))}
           </ul>
-        </Card>
-      </section>
+        </section>
+      )}
 
-      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
-        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
-          Potencial de Desarrollo
-        </h2>
-        <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed text-ink shadow-sm">
-          {opportunity.developmentPotential_es}
-        </p>
-      </section>
+      {opportunity.distances_es.length > 0 && (
+        <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Ubicación</h2>
+          <Card className="p-0 overflow-hidden">
+            <Photo src={opportunity.mapImage} alt={`Mapa de ${opportunity.name_es}`} className="h-80 w-full" />
+            <ul className="space-y-2 p-8 text-ink">
+              {opportunity.distances_es.map((dist) => (
+                <li key={dist}>{dist}</li>
+              ))}
+            </ul>
+          </Card>
+        </section>
+      )}
 
-      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
-        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
-          Características Técnicas
-        </h2>
-        <Button href={opportunity.techSheet} target="_blank" rel="noopener noreferrer">
-          Descargar ficha técnica
-        </Button>
-      </section>
+      {opportunity.developmentPotential_es && (
+        <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
+            Potencial de Desarrollo
+          </h2>
+          <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed text-ink shadow-sm">
+            {opportunity.developmentPotential_es}
+          </p>
+        </section>
+      )}
+
+      {opportunity.techSheet && (
+        <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
+            Características Técnicas
+          </h2>
+          <Button href={opportunity.techSheet} target="_blank" rel="noopener noreferrer">
+            Descargar ficha técnica
+          </Button>
+        </section>
+      )}
 
       <section id="dossier" className="bg-paper px-6 py-20 md:px-10">
         <div className="mx-auto max-w-3xl text-center">
@@ -101,9 +115,10 @@ export default async function OpportunityDetailES({ params }) {
             Déjanos tus datos y te enviaremos el dossier completo de esta oportunidad.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm
+            <LeadFormA
               locale="es"
-              source={`ES - Dossier ${opportunity.name_es}`}
+              propertyName={opportunity.name_es}
+              propertySlug={opportunity.slug}
               id="lead-dossier"
             />
           </div>

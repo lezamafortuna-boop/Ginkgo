@@ -1,6 +1,6 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
-import LeadForm from "@/components/LeadForm";
+import LeadFormD from "@/components/LeadFormD";
 
 export const metadata = {
   title: "Services",
@@ -65,7 +65,7 @@ export default function ServicesEN() {
             Tell us your requirements and we will find opportunities aligned with your goals.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm locale="en" source="EN - Services" id="lead-services" />
+            <LeadFormD locale="en" id="lead-services" />
           </div>
         </div>
       </section>

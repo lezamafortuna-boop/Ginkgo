@@ -1,6 +1,6 @@
 import Button from "../ui/Button";
 import Eyebrow from "../ui/Eyebrow";
-import LeadForm from "../LeadForm";
+import LeadFormD from "../LeadFormD";
 
 export default function HeroES() {
   return (
@@ -45,7 +45,7 @@ export default function HeroES() {
           <p className="mb-8 text-sm text-muted">
             Cuéntanos qué tipo de proyecto buscas y te contactaremos con oportunidades alineadas.
           </p>
-          <LeadForm locale="es" source="ES - Home" id="lead-hero-es" />
+          <LeadFormD locale="es" id="lead-hero-es" />
         </div>
       </section>
     </>

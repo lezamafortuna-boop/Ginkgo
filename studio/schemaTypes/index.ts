@@ -10,6 +10,7 @@ import {opportunity} from './documents/opportunity'
 import {insight} from './documents/insight'
 import {siteDocument} from './documents/document'
 import {activityLog} from './documents/activityLog'
+import {lead} from './documents/lead'
 
 export const schemaTypes = [
   // Objects
@@ -26,4 +27,5 @@ export const schemaTypes = [
   insight,
   siteDocument,
   activityLog,
+  lead,
 ]

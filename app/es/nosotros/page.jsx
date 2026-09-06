@@ -1,6 +1,6 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
-import LeadForm from "@/components/LeadForm";
+import LeadFormD from "@/components/LeadFormD";
 
 export const metadata = {
   title: "Nosotros",
@@ -72,7 +72,7 @@ export default function NosotrosES() {
             Compártenos tus necesidades y te presentaremos oportunidades alineadas con tu perfil.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm locale="es" source="ES - Nosotros" id="lead-nosotros" />
+            <LeadFormD locale="es" id="lead-nosotros" />
           </div>
         </div>
       </section>

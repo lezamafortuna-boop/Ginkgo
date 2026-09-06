@@ -1,6 +1,6 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
-import LeadForm from "@/components/LeadForm";
+import LeadFormD from "@/components/LeadFormD";
 
 export const metadata = {
   title: "About",
@@ -72,7 +72,7 @@ export default function AboutEN() {
             profile.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm locale="en" source="EN - About" id="lead-about" />
+            <LeadFormD locale="en" id="lead-about" />
           </div>
         </div>
       </section>

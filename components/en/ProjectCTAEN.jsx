@@ -1,4 +1,4 @@
-import LeadForm from "../LeadForm";
+import LeadFormD from "../LeadFormD";
 
 export default function ProjectCTAEN() {
   return (
@@ -13,7 +13,7 @@ export default function ProjectCTAEN() {
         </p>
 
         <div className="mt-10 rounded-lg bg-paper p-8 text-left shadow-lg md:p-10">
-          <LeadForm locale="en" source="EN - Next project" id="lead-project-en" />
+          <LeadFormD locale="en" id="lead-project-en" />
         </div>
       </div>
     </section>

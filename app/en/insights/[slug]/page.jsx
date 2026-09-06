@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { insights } from "@/data/insights";
 import Photo from "@/components/ui/Photo";
-import LeadForm from "@/components/LeadForm";
+import LeadFormD from "@/components/LeadFormD";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -52,7 +52,7 @@ export default async function InsightDetailEN({ params }) {
             Tell us your requirements and we will present strategic options.
           </p>
           <div className="mt-10 rounded-lg border border-border bg-cream p-8 text-left shadow-sm md:p-10">
-            <LeadForm locale="en" source={`EN - Insight ${article.title_en}`} id="lead-insight" />
+            <LeadFormD locale="en" id="lead-insight" />
           </div>
         </div>
       </section>
