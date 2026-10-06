@@ -7,6 +7,7 @@ import LanguageSwitcher from "../LanguageSwitcher";
 
 const links = [
   { href: "/en/opportunities", label: "Opportunities" },
+  { href: "/en/map", label: "Map" },
   { href: "/en/services", label: "Services" },
   { href: "/en/insights", label: "Insights" },
   { href: "/en/about", label: "About" },
@@ -17,33 +18,35 @@ export default function NavbarEN() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-paper/95 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
-        <Link href="/en" className="flex items-center">
-          <span className="flex items-center rounded-md bg-charcoal px-3 py-2">
-            <span className="relative h-7 w-[54px] shrink-0">
-              <Image src="/images/ginkgo-logo.png" alt="Ginkgo" fill sizes="54px" className="object-contain" priority />
-            </span>
+    <header className="sticky top-0 z-40 w-full bg-charcoal">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
+        <Link href="/en" className="flex items-center py-1">
+          <span className="relative h-10 w-[60px] shrink-0">
+            <Image src="/images/ginkgo-logo.png" alt="Ginkgo" fill sizes="60px" className="object-contain" priority />
           </span>
         </Link>
 
         <div className="hidden items-center gap-8 text-sm font-medium md:flex">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="text-charcoal transition-colors hover:text-brand-600">
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-white transition-colors duration-300 hover:text-gold"
+            >
               {link.label}
             </Link>
           ))}
           <LanguageSwitcher />
         </div>
 
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-5 md:hidden">
           <LanguageSwitcher />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
-            className="text-charcoal"
+            className="text-white transition-colors duration-300 hover:text-gold"
           >
             {open ? "✕" : "☰"}
           </button>
@@ -51,14 +54,14 @@ export default function NavbarEN() {
       </nav>
 
       {open && (
-        <div className="border-t border-border bg-paper px-6 py-4 md:hidden">
+        <div className="border-t border-white/10 bg-charcoal px-6 py-4 md:hidden">
           <div className="flex flex-col gap-4 text-sm font-medium">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-charcoal hover:text-brand-600"
+                className="text-white transition-colors duration-300 hover:text-gold"
               >
                 {link.label}
               </Link>

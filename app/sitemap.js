@@ -6,6 +6,7 @@ const BASE_URL = "https://ginkgomx.com";
 const staticRoutes = [
   ["/es", "/en"],
   ["/es/oportunidades", "/en/opportunities"],
+  ["/es/mapa", "/en/map"],
   ["/es/servicios", "/en/services"],
   ["/es/nosotros", "/en/about"],
   ["/es/contacto", "/en/contact"],

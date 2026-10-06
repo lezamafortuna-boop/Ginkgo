@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 const ES_TO_EN = {
   "/es": "/en",
   "/es/oportunidades": "/en/opportunities",
+  "/es/mapa": "/en/map",
   "/es/servicios": "/en/services",
   "/es/nosotros": "/en/about",
   "/es/contacto": "/en/contact",
@@ -43,7 +44,7 @@ export default function LanguageSwitcher({ className = "" }) {
   return (
     <Link
       href={targetPath}
-      className={`rounded-md border border-brand-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-600 transition-colors hover:bg-brand-600 hover:text-white ${className}`}
+      className={`text-sm font-medium text-white transition-colors duration-300 hover:text-gold ${className}`}
     >
       {isSpanish ? "EN" : "ES"}
     </Link>

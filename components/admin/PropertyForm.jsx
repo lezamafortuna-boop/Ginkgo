@@ -2,8 +2,17 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+
+// Google Maps touches the browser-only `google.maps` global as soon as it
+// renders — ssr:false is safe here since PropertyForm is already a Client
+// Component, so there's no server-render tree to conflict with.
+const LocationPicker = dynamic(() => import("@/components/maps/LocationPicker"), {
+  ssr: false,
+  loading: () => <div className="h-80 w-full rounded-md border border-border bg-cream" />,
+});
 
 const inputClasses =
   "w-full rounded-md border border-border bg-paper px-3 py-2 text-sm text-charcoal placeholder:text-muted focus:border-brand-600 focus:outline-none";
@@ -143,14 +152,10 @@ export default function PropertyForm({ mode, id, initialValues, regions }) {
         </Field>
       </Section>
 
-      <Section title="Ubicación">
-        <Field label="Latitud">
-          <input type="number" step="any" name="lat" defaultValue={v.lat} className={inputClasses} />
-        </Field>
-        <Field label="Longitud">
-          <input type="number" step="any" name="lng" defaultValue={v.lng} className={inputClasses} />
-        </Field>
-      </Section>
+      <Card className="mb-6">
+        <h2 className="mb-5 font-serif text-lg font-semibold text-charcoal">Ubicación</h2>
+        <LocationPicker initialLat={v.lat} initialLng={v.lng} />
+      </Card>
 
       <Section title="Multimedia">
         <Field label="Imagen principal">
