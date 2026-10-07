@@ -155,6 +155,21 @@ export default function PropertyForm({ mode, id, initialValues, regions }) {
       <Card className="mb-6">
         <h2 className="mb-5 font-serif text-lg font-semibold text-charcoal">Ubicación</h2>
         <LocationPicker initialLat={v.lat} initialLng={v.lng} />
+        <div className="mt-5">
+          <label className={labelClasses}>Precisión en el sitio público</label>
+          <select
+            name="locationPrecision"
+            defaultValue={v.locationPrecision || "approximate"}
+            className={inputClasses}
+          >
+            <option value="approximate">Aproximada (círculo de ~1.5 km; no se revela el punto exacto)</option>
+            <option value="exact">Exacta (pin en el punto marcado)</option>
+          </select>
+          <p className="mt-2 text-xs text-muted">
+            El punto exacto solo se ve en el CRM. En el mapa público, las ubicaciones aproximadas se
+            desplazan y se muestran con un círculo.
+          </p>
+        </div>
       </Card>
 
       <Section title="Multimedia">

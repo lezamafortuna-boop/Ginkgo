@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { APIProvider, Map as GoogleMap, Marker, InfoWindow } from "@vis.gl/react-google-maps";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
-
-const MEXICO_CENTER = { lat: 22.5, lng: -101.5 };
+import { MEXICO_CENTER, APPROX_RADIUS_M } from "@/lib/maps";
+import ApproxCircle from "./ApproxCircle";
 
 const COPY = {
   es: {
@@ -16,6 +16,7 @@ const COPY = {
     viewProperty: "Ver propiedad",
     whatsapp: "Preguntar por WhatsApp",
     empty: "No hay propiedades con ubicación registrada todavía.",
+    approximate: "Ubicación aproximada",
     whatsappMessage: (name) => `Hola, me interesa recibir información sobre ${name}.`,
     propertyHref: (slug) => `/es/oportunidades/${slug}`,
   },
@@ -27,6 +28,7 @@ const COPY = {
     viewProperty: "View property",
     whatsapp: "Ask on WhatsApp",
     empty: "No properties have a registered location yet.",
+    approximate: "Approximate location",
     whatsappMessage: (name) => `Hi, I'd like more information about ${name}.`,
     propertyHref: (slug) => `/en/opportunities/${slug}`,
   },
@@ -109,11 +111,18 @@ export default function PublicPropertyMap({ properties, locale = "es" }) {
         <APIProvider apiKey={apiKey}>
           <GoogleMap defaultCenter={MEXICO_CENTER} defaultZoom={5} gestureHandling="greedy">
             {filtered.map((p) => (
-              <Marker
-                key={p.slug}
-                position={{ lat: p.coordinates.lat, lng: p.coordinates.lng }}
-                onClick={() => setSelected(p)}
-              />
+              <Fragment key={p.slug}>
+                <Marker
+                  position={{ lat: p.coordinates.lat, lng: p.coordinates.lng }}
+                  onClick={() => setSelected(p)}
+                />
+                {p.approximate && (
+                  <ApproxCircle
+                    center={{ lat: p.coordinates.lat, lng: p.coordinates.lng }}
+                    radius={APPROX_RADIUS_M}
+                  />
+                )}
+              </Fragment>
             ))}
 
             {selected && (
@@ -129,6 +138,9 @@ export default function PublicPropertyMap({ properties, locale = "es" }) {
                   <p className="text-xs text-ink">
                     {t.vocation}: {selected[vocationKey]}
                   </p>
+                  {selected.approximate && (
+                    <p className="text-xs italic text-muted">{t.approximate}</p>
+                  )}
                   {selected[briefKey] && (
                     <p className="mt-2 text-xs text-ink">{selected[briefKey]}</p>
                   )}

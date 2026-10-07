@@ -1,5 +1,6 @@
 import { getMapOpportunities } from "@/lib/sanity/queries";
 import { toLegacyOpportunity } from "@/lib/sanity/adapters";
+import { toPublicMapPoint } from "@/lib/maps";
 import PublicPropertyMap from "@/components/maps/PublicPropertyMapClient";
 import Eyebrow from "@/components/ui/Eyebrow";
 
@@ -15,7 +16,7 @@ export const metadata = {
 };
 
 export default async function MapEN() {
-  const properties = (await getMapOpportunities()).map(toLegacyOpportunity);
+  const properties = (await getMapOpportunities()).map(toLegacyOpportunity).map(toPublicMapPoint);
 
   return (
     <main className="min-h-screen bg-cream">

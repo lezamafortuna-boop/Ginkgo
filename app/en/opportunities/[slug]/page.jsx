@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { getOpportunityBySlug, getPropertyDocuments } from "@/lib/sanity/queries";
 import { toLegacyOpportunity } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
+import PropertyLocationMap from "@/components/maps/PropertyLocationMapClient";
+import { toPublicMapPoint } from "@/lib/maps";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import LeadFormA from "@/components/LeadFormA";
@@ -26,6 +28,7 @@ export default async function OpportunityDetailEN({ params }) {
   const { slug } = await params;
   const opportunity = toLegacyOpportunity(await getOpportunityBySlug(slug));
   if (!opportunity || opportunity.status !== "disponible") notFound();
+  const mapPoint = toPublicMapPoint(opportunity);
   const documents = await getPropertyDocuments(opportunity.id);
 
   return (
@@ -73,11 +76,22 @@ export default async function OpportunityDetailEN({ params }) {
         </section>
       )}
 
-      {opportunity.distances_en.length > 0 && (
+      {(opportunity.distances_en.length > 0 || mapPoint.coordinates) && (
         <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
           <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Location</h2>
           <Card className="p-0 overflow-hidden">
-            <Photo src={opportunity.mapImage} alt={`Map of ${opportunity.name_en}`} className="h-80 w-full" />
+            {mapPoint.coordinates ? (
+              <PropertyLocationMap
+                coordinates={mapPoint.coordinates}
+                approximate={mapPoint.approximate}
+                name={opportunity.name_en}
+                locale="en"
+              />
+            ) : (
+              opportunity.mapImage && (
+                <Photo src={opportunity.mapImage} alt={opportunity.name_en} className="h-80 w-full" />
+              )
+            )}
             <ul className="space-y-2 p-8 text-ink">
               {opportunity.distances_en.map((dist) => (
                 <li key={dist}>{dist}</li>
