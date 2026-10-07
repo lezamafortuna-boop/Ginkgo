@@ -144,6 +144,21 @@ export const opportunity = defineType({
       type: 'geopoint',
       group: 'location',
     }),
+    defineField({
+      name: 'locationPrecision',
+      title: 'Precisión de la ubicación pública',
+      description: 'Aproximada: el sitio público muestra un círculo y nunca el punto exacto.',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Aproximada', value: 'approximate'},
+          {title: 'Exacta', value: 'exact'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'approximate',
+      group: 'location',
+    }),
 
     defineField({
       name: 'gallery',
