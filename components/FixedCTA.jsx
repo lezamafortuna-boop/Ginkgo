@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { WhatsAppIcon } from "./ui/icons";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
 import { buildWhatsappUrl, getContextualWhatsappMessage, GENERIC_MESSAGE } from "@/lib/whatsapp";
 
-export default function FixedCTA() {
+export default function FixedCTA({ whatsappNumber }) {
   const pathname = usePathname();
   const isSpanish = pathname.startsWith("/es");
   const target = isSpanish ? "/es/contacto#formulario" : "/en/contact#formEN";
@@ -26,7 +25,7 @@ export default function FixedCTA() {
     };
   }, [pathname]);
 
-  const whatsappUrl = buildWhatsappUrl(WHATSAPP_NUMBER, message);
+  const whatsappUrl = buildWhatsappUrl(whatsappNumber, message);
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">

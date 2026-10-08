@@ -3,7 +3,6 @@
 import { Fragment, useMemo, useState } from "react";
 import { APIProvider, Map as GoogleMap, Marker, InfoWindow } from "@vis.gl/react-google-maps";
 import { buildWhatsappUrl } from "@/lib/whatsapp";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
 import { MEXICO_CENTER, APPROX_RADIUS_M } from "@/lib/maps";
 import ApproxCircle from "./ApproxCircle";
 
@@ -34,7 +33,7 @@ const COPY = {
   },
 };
 
-export default function PublicPropertyMap({ properties, locale = "es" }) {
+export default function PublicPropertyMap({ properties, locale = "es", whatsappNumber }) {
   const t = COPY[locale] ?? COPY.es;
   const nameKey = locale === "en" ? "name_en" : "name_es";
   const vocationKey = locale === "en" ? "vocation_en" : "vocation_es";
@@ -152,7 +151,7 @@ export default function PublicPropertyMap({ properties, locale = "es" }) {
                       {t.viewProperty}
                     </a>
                     <a
-                      href={buildWhatsappUrl(WHATSAPP_NUMBER, t.whatsappMessage(selected[nameKey]))}
+                      href={buildWhatsappUrl(whatsappNumber, t.whatsappMessage(selected[nameKey]))}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs font-semibold text-[#25D366] hover:underline"

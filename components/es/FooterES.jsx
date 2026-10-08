@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MailIcon, WhatsAppIcon, InstagramIcon } from "../ui/icons";
-import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/contact";
+import { getContactSettings } from "@/lib/siteSettings";
 import { buildWhatsappUrl, GENERIC_MESSAGE } from "@/lib/whatsapp";
 
-const whatsappUrl = buildWhatsappUrl(WHATSAPP_NUMBER, GENERIC_MESSAGE.es);
+export default async function FooterES() {
+  const { whatsappNumber, whatsappDisplay, email, instagramUrl, linkedinUrl } = await getContactSettings();
+  const whatsappUrl = buildWhatsappUrl(whatsappNumber, GENERIC_MESSAGE.es);
 
-export default function FooterES() {
   return (
     <footer className="border-t border-border bg-paper px-6 py-16 md:px-10">
       <div className="mx-auto mb-12 flex max-w-6xl items-center">
@@ -24,14 +25,14 @@ export default function FooterES() {
             <li className="flex items-start gap-2">
               <WhatsAppIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-600">
-                WhatsApp — {WHATSAPP_DISPLAY}
+                WhatsApp — {whatsappDisplay}
               </a>
             </li>
             <li className="flex items-start gap-2">
               <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
               <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                title={CONTACT_EMAIL}
+                href={`mailto:${email}`}
+                title={email}
                 className="hover:text-brand-600"
               >
                 Enviar correo
@@ -43,27 +44,31 @@ export default function FooterES() {
         <div>
           <h3 className="mb-4 font-serif text-lg font-semibold text-brand-600">Síguenos</h3>
           <ul className="space-y-3 text-sm text-ink">
-            <li className="flex items-start gap-2">
-              <InstagramIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-brand-600"
-              >
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-brand-600"
-              >
-                LinkedIn
-              </a>
-            </li>
+            {instagramUrl && (
+              <li className="flex items-start gap-2">
+                <InstagramIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-600"
+                >
+                  Instagram
+                </a>
+              </li>
+            )}
+            {linkedinUrl && (
+              <li>
+                <a
+                  href={linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-600"
+                >
+                  LinkedIn
+                </a>
+              </li>
+            )}
           </ul>
         </div>
 

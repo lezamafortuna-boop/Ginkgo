@@ -1,4 +1,5 @@
 import Card from "@/components/ui/Card";
+import { getContactSettings } from "@/lib/siteSettings";
 
 export const metadata = {
   title: "Aviso de Privacidad",
@@ -8,7 +9,8 @@ export const metadata = {
   },
 };
 
-export default function PrivacidadES() {
+export default async function PrivacidadES() {
+  const { email } = await getContactSettings();
   return (
     <main className="min-h-screen bg-cream px-6 py-20 md:px-10">
       <section className="mx-auto max-w-4xl">
@@ -36,8 +38,8 @@ export default function PrivacidadES() {
           </p>
           <p>
             El usuario puede solicitar la actualización o eliminación de sus datos escribiendo a{" "}
-            <a href="mailto:tonatiuhcervantes@ginkgomx.com" className="text-brand-600 hover:underline">
-              tonatiuhcervantes@ginkgomx.com
+            <a href={`mailto:${email}`} className="text-brand-600 hover:underline">
+              {email}
             </a>
             .
           </p>

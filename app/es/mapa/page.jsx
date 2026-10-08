@@ -3,6 +3,7 @@ import { toLegacyOpportunity } from "@/lib/sanity/adapters";
 import { toPublicMapPoint } from "@/lib/maps";
 import PublicPropertyMap from "@/components/maps/PublicPropertyMapClient";
 import Eyebrow from "@/components/ui/Eyebrow";
+import { getContactSettings } from "@/lib/siteSettings";
 
 export const revalidate = 60;
 
@@ -16,6 +17,7 @@ export const metadata = {
 };
 
 export default async function MapaES() {
+  const { whatsappNumber } = await getContactSettings();
   const properties = (await getMapOpportunities()).map(toLegacyOpportunity).map(toPublicMapPoint).filter((p) => p.coordinates);
 
   return (
@@ -31,7 +33,7 @@ export default async function MapaES() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10">
-        <PublicPropertyMap properties={properties} locale="es" />
+        <PublicPropertyMap properties={properties} locale="es" whatsappNumber={whatsappNumber} />
       </section>
     </main>
   );

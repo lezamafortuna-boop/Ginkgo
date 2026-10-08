@@ -1,6 +1,7 @@
 import NavbarEN from "@/components/en/NavbarEN";
 import FooterEN from "@/components/en/FooterEN";
 import FixedCTA from "@/components/FixedCTA";
+import { getContactSettings } from "@/lib/siteSettings";
 import SetHtmlLang from "@/components/SetHtmlLang";
 
 export const metadata = {
@@ -22,14 +23,16 @@ export const metadata = {
   },
 };
 
-export default function LayoutEN({ children }) {
+export default async function LayoutEN({ children }) {
+  const { whatsappNumber } = await getContactSettings();
+
   return (
     <>
       <SetHtmlLang lang="en" />
       <NavbarEN />
       {children}
       <FooterEN />
-      <FixedCTA />
+      <FixedCTA whatsappNumber={whatsappNumber} />
     </>
   );
 }

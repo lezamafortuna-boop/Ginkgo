@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { sanityWriteClient } from "@/lib/sanity/writeClient";
-import { CONTACT_EMAIL } from "@/lib/contact";
+import { getContactSettings } from "@/lib/siteSettings";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -238,7 +238,7 @@ export async function POST(request) {
       const rows = summaryRows(doc);
       const { error: sendError } = await resend.emails.send({
         from: "Ginkgo Leads <leads@ginkgomx.com>",
-        to: CONTACT_EMAIL,
+        to: (await getContactSettings()).email,
         subject: `Nuevo lead (${FORM_TYPE_LABELS[doc.formType]})`,
         html: `<h2>Nuevo Lead</h2>${rows
           .map(([label, value]) => `<p><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</p>`)

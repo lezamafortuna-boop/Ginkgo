@@ -3,10 +3,8 @@ import Card from "@/components/ui/Card";
 import LeadFormD from "@/components/LeadFormD";
 import LeadFormB from "@/components/LeadFormB";
 import { MailIcon, WhatsAppIcon, InstagramIcon } from "@/components/ui/icons";
-import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, CONTACT_EMAIL } from "@/lib/contact";
+import { getContactSettings, instagramHandle } from "@/lib/siteSettings";
 import { buildWhatsappUrl, GENERIC_MESSAGE } from "@/lib/whatsapp";
-
-const whatsappUrl = buildWhatsappUrl(WHATSAPP_NUMBER, GENERIC_MESSAGE.es);
 
 export const metadata = {
   title: "Contacto",
@@ -17,7 +15,10 @@ export const metadata = {
   },
 };
 
-export default function ContactoES() {
+export default async function ContactoES() {
+  const { whatsappNumber, whatsappDisplay, email, instagramUrl } = await getContactSettings();
+  const whatsappUrl = buildWhatsappUrl(whatsappNumber, GENERIC_MESSAGE.es);
+
   return (
     <main className="bg-cream">
       <section className="px-6 py-24 text-center md:px-10">
@@ -43,7 +44,7 @@ export default function ContactoES() {
               rel="noopener noreferrer"
               className="mt-1 block text-sm text-ink hover:text-brand-600"
             >
-              {WHATSAPP_DISPLAY}
+              {whatsappDisplay}
             </a>
           </div>
         </Card>
@@ -55,8 +56,8 @@ export default function ContactoES() {
           <div className="min-w-0">
             <h3 className="font-serif text-lg font-semibold text-charcoal">Correo</h3>
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              title={CONTACT_EMAIL}
+              href={`mailto:${email}`}
+              title={email}
               className="mt-1 block text-sm text-ink hover:text-brand-600"
             >
               Enviar correo
@@ -64,22 +65,24 @@ export default function ContactoES() {
           </div>
         </Card>
 
-        <Card className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
-            <InstagramIcon />
-          </div>
-          <div className="min-w-0">
-            <h3 className="font-serif text-lg font-semibold text-charcoal">Instagram</h3>
-            <a
-              href="https://www.instagram.com/ginkgomex?igsh=MXVpd3h0dGNhdHh0cQ=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-1 block text-sm text-ink hover:text-brand-600"
-            >
-              @ginkgomex
-            </a>
-          </div>
-        </Card>
+        {instagramUrl && (
+          <Card className="flex items-start gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600">
+              <InstagramIcon />
+            </div>
+            <div className="min-w-0">
+              <h3 className="font-serif text-lg font-semibold text-charcoal">Instagram</h3>
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 block text-sm text-ink hover:text-brand-600"
+              >
+                {instagramHandle(instagramUrl)}
+              </a>
+            </div>
+          </Card>
+        )}
       </section>
 
       <section id="formulario" className="bg-paper px-6 py-20 md:px-10">
