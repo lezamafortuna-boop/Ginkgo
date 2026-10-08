@@ -1,32 +1,18 @@
 import Eyebrow from "../ui/Eyebrow";
 import Card from "../ui/Card";
+import { getSiteText } from "@/lib/siteContent";
 
-const items = [
-  {
-    title: "Strategic Analysis",
-    text: "We evaluate urban potential, connectivity, land vocation, and development possibilities to identify opportunities with real value.",
-  },
-  {
-    title: "Specialized Commercialization",
-    text: "We connect opportunities with developers and investors through long-term, strategy-driven commercial approaches.",
-  },
-  {
-    title: "Market Knowledge",
-    text: "We analyze urban trends, growth corridors, and infrastructure to detect opportunities with high potential.",
-  },
-  {
-    title: "Guidance & Support",
-    text: "From the first contact to negotiation, we provide technical and commercial insights to support decision-making.",
-  },
-];
+const ITEM_KEYS = [1, 2, 3, 4];
 
-export default function WhyGinkgoEN() {
+export default async function WhyGinkgoEN() {
+  const t = await getSiteText();
+  const items = ITEM_KEYS.map((n) => ({ title: t(`home.why.${n}.title`, "en"), text: t(`home.why.${n}.text`, "en") }));
   return (
     <section className="bg-paper px-6 py-20 md:px-10">
       <div className="mx-auto max-w-6xl">
-        <Eyebrow>Our approach</Eyebrow>
+        <Eyebrow>{t("home.why.eyebrow", "en")}</Eyebrow>
         <h2 className="mt-2 font-serif text-3xl font-semibold text-charcoal md:text-4xl">
-          Why Ginkgo?
+          {t("home.why.title", "en")}
         </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">

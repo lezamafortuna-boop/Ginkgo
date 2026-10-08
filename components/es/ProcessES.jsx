@@ -1,19 +1,15 @@
 import Eyebrow from "../ui/Eyebrow";
+import { getSiteText } from "@/lib/siteContent";
 
-const steps = [
-  "Analizamos el potencial del terreno.",
-  "Diseñamos la estrategia comercial.",
-  "Conectamos con inversionistas y desarrolladores.",
-  "Acompañamos la negociación.",
-];
-
-export default function ProcessES() {
+export default async function ProcessES() {
+  const t = await getSiteText();
+  const steps = [1, 2, 3, 4].map((n) => t(`home.process.${n}`, "es"));
   return (
     <section className="bg-cream px-6 py-20 md:px-10">
       <div className="mx-auto max-w-5xl text-center">
-        <Eyebrow>Cómo trabajamos</Eyebrow>
+        <Eyebrow>{t("home.process.eyebrow", "es")}</Eyebrow>
         <h2 className="mt-2 font-serif text-3xl font-semibold text-charcoal md:text-4xl">
-          Nuestro Proceso
+          {t("home.process.title", "es")}
         </h2>
 
         <div className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-4">

@@ -1,6 +1,7 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
 import LeadFormD from "@/components/LeadFormD";
+import { getSiteText } from "@/lib/siteContent";
 
 export const metadata = {
   title: "Services",
@@ -12,37 +13,15 @@ export const metadata = {
   },
 };
 
-const services = [
-  {
-    title: "Opportunity Identification",
-    text: "We analyze growth corridors, infrastructure, land vocation, and urban trends to identify land with high development potential. Our approach combines technical, urban, and commercial analysis.",
-  },
-  {
-    title: "Analysis & Structuring",
-    text: "We evaluate each opportunity from an integral perspective: land size, access, infrastructure, regulations, vocation, and appreciation potential. We structure information to support decision-making.",
-  },
-  {
-    title: "Specialized Commercialization",
-    text: "We connect opportunities with developers and investors through long-term, strategy-driven commercial approaches. We present clear, technical, and reliable information.",
-  },
-  {
-    title: "Full Support",
-    text: "We provide support throughout the entire process: from the first contact to final negotiation. Our goal is to facilitate informed and secure decisions.",
-  },
-];
-
-export default function ServicesEN() {
+export default async function ServicesEN() {
+  const t = await getSiteText();
+  const services = [1, 2, 3, 4].map((n) => ({ title: t(`services.${n}.title`, "en"), text: t(`services.${n}.text`, "en") }));
   return (
     <main className="bg-cream">
       <section className="px-6 py-24 text-center md:px-10">
-        <Eyebrow>What we do</Eyebrow>
-        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">
-          Services
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">
-          Specialized solutions for developers and investors seeking strategic land opportunities
-          in Mexico.
-        </p>
+        <Eyebrow>{t("services.eyebrow", "en")}</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">{t("services.title", "en")}</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">{t("services.intro", "en")}</p>
       </section>
 
       <section className="mx-auto max-w-5xl space-y-8 px-6 pb-20 md:px-10">

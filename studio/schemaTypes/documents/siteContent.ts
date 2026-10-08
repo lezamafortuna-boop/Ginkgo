@@ -24,6 +24,26 @@ export const siteContent = defineType({
       group: 'home',
     }),
     defineField({
+      name: 'texts',
+      title: 'Textos editables (admin)',
+      description: 'Los gestiona el panel /admin/contenido (catálogo en lib/siteContentCatalog.js). Solo guarda los textos que difieren del original.',
+      type: 'array',
+      group: 'sections',
+      readOnly: true,
+      of: [
+        {
+          type: 'object',
+          name: 'textOverride',
+          fields: [
+            defineField({name: 'key', title: 'Clave', type: 'string'}),
+            defineField({name: 'es', title: 'Español', type: 'text'}),
+            defineField({name: 'en', title: 'English', type: 'text'}),
+          ],
+          preview: {select: {title: 'key', subtitle: 'es'}},
+        },
+      ],
+    }),
+    defineField({
       name: 'sections',
       title: 'Secciones informativas',
       description: 'Bloques reutilizables de texto + imagen para las páginas de contenido.',

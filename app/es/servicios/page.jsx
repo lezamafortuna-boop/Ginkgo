@@ -1,6 +1,7 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
 import LeadFormD from "@/components/LeadFormD";
+import { getSiteText } from "@/lib/siteContent";
 
 export const metadata = {
   title: "Servicios",
@@ -12,37 +13,15 @@ export const metadata = {
   },
 };
 
-const services = [
-  {
-    title: "Identificación de Oportunidades",
-    text: "Analizamos corredores de crecimiento, infraestructura, vocación de suelo y tendencias urbanas para detectar terrenos con alto potencial de desarrollo. Nuestro enfoque combina análisis técnico, urbano y comercial.",
-  },
-  {
-    title: "Análisis y Estructuración",
-    text: "Evaluamos cada oportunidad desde una perspectiva integral: superficie, accesos, infraestructura, normativa, vocación y potencial de plusvalía. Estructuramos la información para facilitar la toma de decisiones.",
-  },
-  {
-    title: "Comercialización Especializada",
-    text: "Conectamos oportunidades con desarrolladores e inversionistas mediante estrategias comerciales enfocadas en proyectos de largo plazo. Presentamos información clara, técnica y confiable.",
-  },
-  {
-    title: "Acompañamiento Integral",
-    text: "Brindamos soporte durante todo el proceso: desde el primer acercamiento hasta la negociación final. Nuestro objetivo es facilitar decisiones informadas y seguras.",
-  },
-];
-
-export default function ServiciosES() {
+export default async function ServiciosES() {
+  const t = await getSiteText();
+  const services = [1, 2, 3, 4].map((n) => ({ title: t(`services.${n}.title`, "es"), text: t(`services.${n}.text`, "es") }));
   return (
     <main className="bg-cream">
       <section className="px-6 py-24 text-center md:px-10">
-        <Eyebrow>Lo que hacemos</Eyebrow>
-        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">
-          Servicios
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">
-          Soluciones especializadas para desarrolladores e inversionistas que buscan
-          oportunidades estratégicas en México.
-        </p>
+        <Eyebrow>{t("services.eyebrow", "es")}</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">{t("services.title", "es")}</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">{t("services.intro", "es")}</p>
       </section>
 
       <section className="mx-auto max-w-5xl space-y-8 px-6 pb-20 md:px-10">

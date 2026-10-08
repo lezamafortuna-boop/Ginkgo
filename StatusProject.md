@@ -21,6 +21,10 @@ Done and committed so far:
 
 Also: public Sanity reads now use useCdn:false (CDN served stale data after admin edits), and the floating WhatsApp button's per-property/region message is now resolved server-side via /api/whatsapp-message (browser-side Sanity reads were blocked by CORS, so it always showed the generic message). Insights admin tested end-to-end (create, edit, duplicate-slug guard, delete); image upload not yet tested.
 
+8. Contenido del sitio — /admin/contenido (Admin and Assistant) edits, in Spanish and English, the homepage hero, "¿Por qué Ginkgo?", process steps and final call-to-action, plus the Nosotros and Servicios page texts. The catalog of editable texts is lib/siteContentCatalog.js (originals live there as defaults); admin overrides are stored in the Sanity `siteContent` document (`texts` array, only values that differ from the original), read by lib/siteContent.js (getSiteText). Clearing a field (or "Restaurar original") brings back the original text. To make another text editable, add a slot to the catalog and read it with t(key, locale). Tested on the real dataset (save, ES/EN public pages, unknown-key rejection, restore).
+
+Analytics: GA4 measurement ID is now in .env.local and the gtag script loads (verified in dev). Still to do: add the same variable to the hosting environment at launch, confirm events in GA4 DebugView/Realtime, and decide on a cookie-consent banner + mention in the privacy page.
+
 Open items on the maps work:
 - The one existing property ("Ginkgo Macrolotes SA de CV") has invalid saved coordinates (lat 6540.99, lng 65460.99), so it has no pin yet. The friend will send the real coordinates; set them in /admin/propiedades (Ubicación section). Then re-check the pin, circle and popup on /es/mapa, /en/map and the property page.
 - Google Cloud: the old "Maps Platform API Key" (created Oct 3, allowed for 32 APIs) is no longer used. Delete it or restrict it like the new "API key Maps" once nothing else depends on it.
@@ -32,6 +36,6 @@ Analytics (plan §17) — code is written and waiting for the ID: components/Ana
 
 Next up, in order:
 1. Finish analytics once the GA4 ID arrives (see above).
-2. Make the rest of the site content admin-editable (goal: after launch the administrators manage everything from the admin panel). Remaining: "Contenido del sitio" is still a "coming soon" placeholder — homepage hero and informational text are in the JSX; the `siteContent` schema exists, nothing reads it. Larger job, next.
+2. Possible later additions to Contenido del sitio: hero video/image, the Insights/Regions page intros, SEO titles and descriptions, the closing form sections on Nosotros/Servicios, and adding/removing points (the lists have a fixed 4 items).
 
 Deferred to Phase 2 (do not touch yet): studio/ — a standalone Sanity Studio scaffold (schema for Opportunities/Regions/Insights/Site Settings/Leads) reusing the previously-provisioned Sanity project (fua075ju). It's excluded from the Next.js TypeScript build (tsconfig.json) so it doesn't interfere. The public site and admin already read and write opportunities, regions and leads in that Sanity project through lib/sanity/; the Studio itself is what's deferred.

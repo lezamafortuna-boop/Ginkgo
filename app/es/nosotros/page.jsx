@@ -1,6 +1,7 @@
 import Eyebrow from "@/components/ui/Eyebrow";
 import Card from "@/components/ui/Card";
 import LeadFormD from "@/components/LeadFormD";
+import { getSiteText } from "@/lib/siteContent";
 
 export const metadata = {
   title: "Nosotros",
@@ -12,54 +13,30 @@ export const metadata = {
   },
 };
 
-export default function NosotrosES() {
+export default async function NosotrosES() {
+  const t = await getSiteText();
   return (
     <main className="bg-cream">
       <section className="px-6 py-24 text-center md:px-10">
-        <Eyebrow>Quiénes somos</Eyebrow>
-        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">
-          Sobre Ginkgo
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">
-          Una firma especializada en identificar, analizar y estructurar oportunidades de
-          desarrollo inmobiliario.
-        </p>
+        <Eyebrow>{t("about.eyebrow", "es")}</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">{t("about.title", "es")}</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">{t("about.intro", "es")}</p>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16 md:px-10">
-        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">
-          Filosofía Comercial
-        </h2>
+        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">{t("about.philosophy.title", "es")}</h2>
         <Card className="leading-relaxed text-ink">
-          <p className="mb-6">
-            No queremos ser un catálogo de terrenos. Queremos ser reconocidos como una firma que
-            identifica oportunidades de desarrollo.
-          </p>
-          <p className="mb-6">
-            Las propiedades cambian constantemente. Lo que permanece es nuestra capacidad para
-            analizarlas, estructurarlas y conectar oportunidades con inversionistas y
-            desarrolladores.
-          </p>
-          <p>
-            Por ello, solo mostramos las oportunidades más relevantes. El resto del portafolio se
-            presenta de forma personalizada según el perfil del cliente.
-          </p>
+          <p className="mb-6">{t("about.philosophy.1", "es")}</p>
+          <p className="mb-6">{t("about.philosophy.2", "es")}</p>
+          <p>{t("about.philosophy.3", "es")}</p>
         </Card>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
-        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">
-          Cómo trabajamos
-        </h2>
+        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">{t("about.how.title", "es")}</h2>
         <Card className="leading-relaxed text-ink">
-          <p className="mb-6">
-            Identificamos oportunidades mediante análisis urbano, técnico y comercial.
-            Estructuramos la información para facilitar decisiones estratégicas.
-          </p>
-          <p>
-            Conectamos oportunidades con desarrolladores e inversionistas mediante un enfoque
-            consultivo y especializado.
-          </p>
+          <p className="mb-6">{t("about.how.1", "es")}</p>
+          <p>{t("about.how.2", "es")}</p>
         </Card>
       </section>
 
