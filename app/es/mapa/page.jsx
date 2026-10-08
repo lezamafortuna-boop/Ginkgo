@@ -16,7 +16,7 @@ export const metadata = {
 };
 
 export default async function MapaES() {
-  const properties = (await getMapOpportunities()).map(toLegacyOpportunity).map(toPublicMapPoint);
+  const properties = (await getMapOpportunities()).map(toLegacyOpportunity).map(toPublicMapPoint).filter((p) => p.coordinates);
 
   return (
     <main className="min-h-screen bg-cream">

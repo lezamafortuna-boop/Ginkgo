@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { APIProvider, Map, Marker, InfoWindow } from "@vis.gl/react-google-maps";
-
-const MEXICO_CENTER = { lat: 22.5, lng: -101.5 };
+import { MEXICO_CENTER, isValidCoordinates } from "@/lib/maps";
 
 const STATUS_LABELS = {
   disponible: "Disponible",
@@ -12,7 +11,9 @@ const STATUS_LABELS = {
   vendido: "Vendido",
 };
 
-export default function AdminPropertiesMap({ properties }) {
+export default function AdminPropertiesMap({ properties: all }) {
+  const properties = all.filter((p) => isValidCoordinates(p.coordinates));
+  const invalidCount = all.length - properties.length;
   const [selected, setSelected] = useState(null);
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -34,6 +35,13 @@ export default function AdminPropertiesMap({ properties }) {
   }
 
   return (
+    <div>
+      {invalidCount > 0 && (
+        <p className="mb-3 rounded-md border border-border bg-cream p-3 text-sm text-muted">
+          {invalidCount} propiedad(es) tienen coordenadas inválidas y no se muestran — corrígelas desde la
+          edición de cada propiedad.
+        </p>
+      )}
     <div className="h-[600px] overflow-hidden rounded-lg border border-border">
       <APIProvider apiKey={apiKey}>
         <Map defaultCenter={MEXICO_CENTER} defaultZoom={5} gestureHandling="greedy">
@@ -64,6 +72,7 @@ export default function AdminPropertiesMap({ properties }) {
           )}
         </Map>
       </APIProvider>
+    </div>
     </div>
   );
 }
