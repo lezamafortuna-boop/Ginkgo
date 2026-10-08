@@ -11,6 +11,7 @@ const COPY = {
     lastName: "Apellido",
     email: "Correo",
     phone: "Teléfono / WhatsApp",
+    company: "Empresa (opcional)",
     lookingFor: "¿Qué estás buscando?",
     lookingForOptions: [
       "Terreno para desarrollo",
@@ -38,6 +39,7 @@ const COPY = {
     lastName: "Last name",
     email: "Email",
     phone: "Phone / WhatsApp",
+    company: "Company (optional)",
     lookingFor: "What are you looking for?",
     lookingForOptions: [
       "Land for development",
@@ -116,6 +118,11 @@ export default function LeadFormC({ locale = "es", id = "lead-c" }) {
       <div>
         <label className={labelClasses}>{t.phone}</label>
         <input name="phone" type="tel" required maxLength={40} className={inputClasses} />
+      </div>
+
+      <div className="md:col-span-2">
+        <label className={labelClasses}>{t.company}</label>
+        <input name="company" maxLength={120} className={inputClasses} />
       </div>
 
       <div className="md:col-span-2">
