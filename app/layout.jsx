@@ -1,5 +1,6 @@
 import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
+import Analytics from "@/components/Analytics";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,7 +25,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className={`${montserrat.variable} ${poppins.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
