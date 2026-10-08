@@ -1,11 +1,14 @@
 import { notFound } from "next/navigation";
-import { insights } from "@/data/insights";
+import { getInsightBySlug } from "@/lib/sanity/queries";
+import { toLegacyInsight } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
 import LeadFormD from "@/components/LeadFormD";
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const article = insights.find((i) => i.slug === slug);
+  const article = toLegacyInsight(await getInsightBySlug(slug));
   if (!article) return {};
   return {
     title: article.title_en,
@@ -19,7 +22,7 @@ export async function generateMetadata({ params }) {
 
 export default async function InsightDetailEN({ params }) {
   const { slug } = await params;
-  const article = insights.find((i) => i.slug === slug);
+  const article = toLegacyInsight(await getInsightBySlug(slug));
   if (!article) notFound();
 
   return (

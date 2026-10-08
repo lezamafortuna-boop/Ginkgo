@@ -1,4 +1,5 @@
-import { insights } from "@/data/insights";
+import { getPublicInsights } from "@/lib/sanity/queries";
+import { toLegacyInsight } from "@/lib/sanity/adapters";
 import Photo from "@/components/ui/Photo";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
@@ -13,7 +14,11 @@ export const metadata = {
   },
 };
 
-export default function InsightsES() {
+export const revalidate = 60;
+
+export default async function InsightsES() {
+  const insights = (await getPublicInsights()).map(toLegacyInsight);
+
   return (
     <main className="min-h-screen bg-cream">
       <section className="px-6 py-20 text-center md:px-10">
@@ -27,6 +32,7 @@ export default function InsightsES() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10">
+        {insights.length === 0 && <p className="text-center text-ink">Pronto publicaremos nuevos análisis.</p>}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {insights.map((article) => (
             <Card key={article.slug} className="flex flex-col overflow-hidden p-0">

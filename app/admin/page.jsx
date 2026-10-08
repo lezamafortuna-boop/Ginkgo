@@ -9,6 +9,7 @@ const MODULES = [
   { href: "/admin/regiones", label: "Regiones", desc: "Regiones estratégicas y sus propiedades asociadas." },
   { href: "/admin/mapas", label: "Mapas interactivos", desc: "Vista de pines sobre el mapa público." },
   { href: "/admin/documentos", label: "Documentos", desc: "Fichas técnicas y archivos asociados." },
+  { href: "/admin/insights", label: "Insights", desc: "Artículos y análisis de mercado del sitio público." },
   { href: "/admin/contenido", label: "Contenido del sitio", desc: "Textos e imágenes de la web pública." },
 ];
 

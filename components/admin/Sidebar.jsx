@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: "/admin/regiones", label: "Regiones" },
   { href: "/admin/mapas", label: "Mapas interactivos" },
   { href: "/admin/documentos", label: "Documentos" },
+  { href: "/admin/insights", label: "Insights" },
   { href: "/admin/contenido", label: "Contenido del sitio" },
   { href: "/admin/usuarios", label: "Usuarios", adminOnly: true },
   { href: "/admin/configuracion", label: "Configuración", adminOnly: true },
