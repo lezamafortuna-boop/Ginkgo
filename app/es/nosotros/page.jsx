@@ -6,7 +6,7 @@ import { getSiteText } from "@/lib/siteContent";
 export const metadata = {
   title: "Nosotros",
   description:
-    "Una firma especializada en identificar, analizar y estructurar oportunidades de desarrollo inmobiliario en México.",
+    "Ginkgo se especializa en macrolotes y terrenos con potencial de desarrollo, acercando a propietarios, inversionistas y desarrolladores con análisis, contexto y estrategia.",
   alternates: {
     canonical: "/es/nosotros",
     languages: { "es-MX": "/es/nosotros", "en-US": "/en/about" },
@@ -18,25 +18,30 @@ export default async function NosotrosES() {
   return (
     <main className="bg-cream">
       <section className="px-6 py-24 text-center md:px-10">
-        <Eyebrow>{t("about.eyebrow", "es")}</Eyebrow>
-        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">{t("about.title", "es")}</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">{t("about.intro", "es")}</p>
+        <Eyebrow className="justify-center">{t("about.eyebrow", "es")}</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-3xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">{t("about.title", "es")}</h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink">{t("about.intro", "es")}</p>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16 md:px-10">
-        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">{t("about.philosophy.title", "es")}</h2>
         <Card className="leading-relaxed text-ink">
-          <p className="mb-6">{t("about.philosophy.1", "es")}</p>
-          <p className="mb-6">{t("about.philosophy.2", "es")}</p>
-          <p>{t("about.philosophy.3", "es")}</p>
+          <p className="mb-6">{t("about.vision.1", "es")}</p>
+          <p className="mb-6">{t("about.vision.2", "es")}</p>
+          <p>{t("about.vision.3", "es")}</p>
         </Card>
+        <p className="mx-auto mt-12 max-w-3xl border-l-2 border-gold pl-6 font-serif text-xl italic leading-relaxed text-charcoal md:text-2xl">
+          {t("about.question", "es")}
+        </p>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
-        <h2 className="mb-6 font-serif text-2xl font-semibold text-charcoal md:text-3xl">{t("about.how.title", "es")}</h2>
+        <Eyebrow>{t("about.who.eyebrow", "es")}</Eyebrow>
+        <h2 className="mb-6 mt-2 font-serif text-2xl font-semibold text-charcoal md:text-3xl">{t("about.who.title", "es")}</h2>
         <Card className="leading-relaxed text-ink">
-          <p className="mb-6">{t("about.how.1", "es")}</p>
-          <p>{t("about.how.2", "es")}</p>
+          <p className="mb-6">{t("about.who.1", "es")}</p>
+          <p className="mb-6">{t("about.who.2", "es")}</p>
+          <p className="mb-6">{t("about.who.3", "es")}</p>
+          <p className="font-semibold text-charcoal">{t("about.who.commitment", "es")}</p>
         </Card>
       </section>
 

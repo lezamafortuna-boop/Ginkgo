@@ -6,7 +6,7 @@ import { getSiteText } from "@/lib/siteContent";
 export const metadata = {
   title: "Servicios",
   description:
-    "Soluciones especializadas para desarrolladores e inversionistas que buscan oportunidades estratégicas en México.",
+    "Identificación, análisis y comercialización de macrolotes y terrenos con potencial de desarrollo inmobiliario en México.",
   alternates: {
     canonical: "/es/servicios",
     languages: { "es-MX": "/es/servicios", "en-US": "/en/services" },
@@ -19,20 +19,27 @@ export default async function ServiciosES() {
   return (
     <main className="bg-cream">
       <section className="px-6 py-24 text-center md:px-10">
-        <Eyebrow>{t("services.eyebrow", "es")}</Eyebrow>
-        <h1 className="mx-auto mt-2 max-w-2xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">{t("services.title", "es")}</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink">{t("services.intro", "es")}</p>
+        <Eyebrow className="justify-center">{t("services.eyebrow", "es")}</Eyebrow>
+        <h1 className="mx-auto mt-2 max-w-3xl font-serif text-4xl font-semibold text-charcoal md:text-5xl">{t("services.title", "es")}</h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink">{t("services.intro", "es")}</p>
       </section>
 
-      <section className="mx-auto max-w-5xl space-y-8 px-6 pb-20 md:px-10">
-        {services.map((service) => (
-          <Card key={service.title}>
-            <h2 className="mb-4 font-serif text-2xl font-semibold text-charcoal">
-              {service.title}
-            </h2>
-            <p className="leading-relaxed text-ink">{service.text}</p>
-          </Card>
-        ))}
+      <section className="mx-auto max-w-3xl space-y-6 px-6 pb-16 leading-relaxed text-ink md:px-10">
+        <p>{t("services.intro.2", "es")}</p>
+        <p>{t("services.intro.3", "es")}</p>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
+        <h2 className="mb-8 font-serif text-2xl font-semibold text-charcoal md:text-3xl">{t("services.list.title", "es")}</h2>
+        <div className="space-y-8">
+          {services.map((service, index) => (
+            <Card key={service.title}>
+              <p className="font-serif text-sm font-semibold text-brand-600">{String(index + 1).padStart(2, "0")}</p>
+              <h3 className="mb-4 mt-1 font-serif text-2xl font-semibold text-charcoal">{service.title}</h3>
+              <p className="leading-relaxed text-ink">{service.text}</p>
+            </Card>
+          ))}
+        </div>
       </section>
 
       <section id="formulario" className="bg-paper px-6 py-20 md:px-10">

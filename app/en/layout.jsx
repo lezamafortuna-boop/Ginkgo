@@ -10,7 +10,7 @@ export const metadata = {
     template: "%s | GINKGO",
   },
   description:
-    "Curated real estate development opportunities in Mexico for developers and investors.",
+    "Large land tracts and real estate development opportunities in Mexico. We analyze, structure and market land for investors and developers.",
   alternates: {
     canonical: "/en",
     languages: { "es-MX": "/es", "en-US": "/en" },

@@ -10,12 +10,14 @@ const STATUS_LABELS = {
   disponible: "Disponible",
   reservado: "Reservado",
   vendido: "Vendido",
+  oculto: "Oculto",
 };
 
 const STATUS_STYLES = {
   disponible: "bg-brand-50 text-brand-700",
   reservado: "bg-gold/20 text-gold-700",
   vendido: "bg-border text-muted",
+  oculto: "bg-border text-muted",
 };
 
 export default async function PropiedadesPage() {

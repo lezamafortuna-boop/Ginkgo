@@ -112,6 +112,7 @@ export default function PropertyForm({ mode, id, initialValues, regions }) {
             <option value="disponible">Disponible</option>
             <option value="reservado">Reservado</option>
             <option value="vendido">Vendido</option>
+            <option value="oculto">Oculto (no aparece en el sitio)</option>
           </select>
         </Field>
         <Field label="Superficie">

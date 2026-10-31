@@ -1,5 +1,6 @@
 import HeroEN from "@/components/en/HeroEN";
 import FeaturedOpportunitiesEN from "@/components/en/FeaturedOpportunitiesEN";
+import BrandTagline from "@/components/BrandTagline";
 import WhyGinkgoEN from "@/components/en/WhyGinkgoEN";
 import ProcessEN from "@/components/en/ProcessEN";
 import StrategicRegionsEN from "@/components/en/StrategicRegionsEN";
@@ -17,6 +18,9 @@ export default function HomeEN() {
 
       {/* 2. Featured Opportunities */}
       <FeaturedOpportunitiesEN />
+
+      {/* Brand tagline */}
+      <BrandTagline locale="en" />
 
       {/* 3. Why Ginkgo */}
       <WhyGinkgoEN />

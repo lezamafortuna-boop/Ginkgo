@@ -9,6 +9,7 @@ const STATUS_LABELS = {
   disponible: "Disponible",
   reservado: "Reservado",
   vendido: "Vendido",
+  oculto: "Oculto",
 };
 
 export default function AdminPropertiesMap({ properties: all }) {

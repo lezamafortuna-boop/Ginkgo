@@ -1,5 +1,6 @@
 import HeroES from "@/components/es/HeroES";
 import FeaturedOpportunitiesES from "@/components/es/FeaturedOpportunitiesES";
+import BrandTagline from "@/components/BrandTagline";
 import WhyGinkgoES from "@/components/es/WhyGinkgoES";
 import ProcessES from "@/components/es/ProcessES";
 import StrategicRegionsES from "@/components/es/StrategicRegionsES";
@@ -14,6 +15,7 @@ export default function HomeES() {
     <>
       <HeroES />
       <FeaturedOpportunitiesES />
+      <BrandTagline locale="es" />
       <WhyGinkgoES />
       <ProcessES />
       <StrategicRegionsES />

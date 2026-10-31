@@ -10,7 +10,7 @@ export const metadata = {
     template: "%s | GINKGO",
   },
   description:
-    "Explora oportunidades de desarrollo cuidadosamente seleccionadas en México para desarrolladores e inversionistas.",
+    "Macrolotes y oportunidades de desarrollo inmobiliario en México. Analizamos, estructuramos y comercializamos tierra para inversionistas y desarrolladores.",
   alternates: {
     canonical: "/es",
     languages: { "es-MX": "/es", "en-US": "/en" },

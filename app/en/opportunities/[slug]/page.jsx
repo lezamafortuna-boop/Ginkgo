@@ -30,36 +30,45 @@ export default async function OpportunityDetailEN({ params }) {
   if (!opportunity || opportunity.status !== "disponible") notFound();
   const mapPoint = toPublicMapPoint(opportunity);
   const documents = await getPropertyDocuments(opportunity.id);
+  const facts = [
+    ["Surface", opportunity.surface],
+    ["Land use", opportunity.vocation_en],
+    ["Availability", opportunity.availability_en],
+  ].filter(([, value]) => value);
 
   return (
     <main className="bg-cream">
       <section className="relative flex h-[60vh] items-center justify-center overflow-hidden">
         <Photo src={opportunity.heroImage} alt={opportunity.name_en} className="absolute inset-0" priority />
         <div className="absolute inset-0 bg-charcoal/50" />
-        <h1 className="relative z-10 px-4 text-center font-serif text-4xl font-semibold text-white md:text-5xl">
-          {opportunity.name_en}
-        </h1>
+        <div className="relative z-10 flex flex-col items-center px-4 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold md:text-sm">Development opportunity</p>
+          <h1 className="mt-3 font-serif text-4xl font-semibold text-white md:text-5xl">{opportunity.name_en}</h1>
+          {opportunity.briefDescription_en && (
+            <p className="mt-4 max-w-2xl text-lg text-white/85">{opportunity.briefDescription_en}</p>
+          )}
+          <Button href="#dossier" className="mt-8">
+            Request information
+          </Button>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
-        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
-          Essential Information
-        </h2>
-        <Card className="grid grid-cols-1 gap-6 text-ink md:grid-cols-3">
-          <p>
-            <strong className="text-charcoal">Surface:</strong> {opportunity.surface}
-          </p>
-          <p>
-            <strong className="text-charcoal">Land use:</strong> {opportunity.vocation_en}
-          </p>
-          <p>
-            <strong className="text-charcoal">Availability:</strong> {opportunity.availability_en}
-          </p>
-        </Card>
-        {opportunity.briefDescription_en && (
-          <p className="mt-8 text-lg leading-relaxed text-ink">{opportunity.briefDescription_en}</p>
-        )}
-      </section>
+      {facts.length > 0 ? (
+        <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
+            Essential Information
+          </h2>
+          <Card className="grid grid-cols-1 gap-6 text-ink md:grid-cols-3">
+            {facts.map(([label, value]) => (
+              <p key={label}>
+                <strong className="text-charcoal">{label}:</strong> {value}
+              </p>
+            ))}
+          </Card>
+        </section>
+      ) : (
+        <div className="h-20" />
+      )}
 
       {opportunity.reasons_en.length > 0 && (
         <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
@@ -104,9 +113,9 @@ export default async function OpportunityDetailEN({ params }) {
       {opportunity.developmentPotential_en && (
         <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
           <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
-            Development Potential
+            The Opportunity
           </h2>
-          <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed text-ink shadow-sm">
+          <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed whitespace-pre-line text-ink shadow-sm">
             {opportunity.developmentPotential_en}
           </p>
         </section>

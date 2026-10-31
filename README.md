@@ -149,3 +149,4 @@ One task at a time: implement, verify (build + browser check), then Luis runs th
 | 2026-10-07 | Contenido del sitio module (homepage, Nosotros, Servicios texts, ES/EN); GA4 ID confirmed working in dev |
 | 2026-10-10 | Planned deployment: client-owned GitHub + Vercel, repo transfer, env vars, DNS, Auth0/Maps/Sanity/Resend updates |
 | 2026-10-14 | README rewritten as project log and handoff (previous contents saved as `README.old.md`) |
+| 2026-10-26 | Client texts from `infoweb.pdf`: portfolio intro, brand tagline band, 4-step process, Servicios, Nosotros (all editable in Contenido del sitio). Real properties Boca de Tomates, El Salitre, Cadereyta de Montes created in Sanity; placeholders set to new `oculto` status (restore: `disponible`, featured true except the test entry). Property pages: "Solicitar información" hero button, empty facts hidden |

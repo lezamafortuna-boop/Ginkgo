@@ -30,34 +30,43 @@ export default async function OpportunityDetailES({ params }) {
   if (!opportunity || opportunity.status !== "disponible") notFound();
   const mapPoint = toPublicMapPoint(opportunity);
   const documents = await getPropertyDocuments(opportunity.id);
+  const facts = [
+    ["Superficie", opportunity.surface],
+    ["Vocación", opportunity.vocation_es],
+    ["Disponibilidad", opportunity.availability_es],
+  ].filter(([, value]) => value);
 
   return (
     <main className="bg-cream">
       <section className="relative flex h-[60vh] items-center justify-center overflow-hidden">
         <Photo src={opportunity.heroImage} alt={opportunity.name_es} className="absolute inset-0" priority />
         <div className="absolute inset-0 bg-charcoal/50" />
-        <h1 className="relative z-10 px-4 text-center font-serif text-4xl font-semibold text-white md:text-5xl">
-          {opportunity.name_es}
-        </h1>
+        <div className="relative z-10 flex flex-col items-center px-4 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold md:text-sm">Oportunidad de desarrollo</p>
+          <h1 className="mt-3 font-serif text-4xl font-semibold text-white md:text-5xl">{opportunity.name_es}</h1>
+          {opportunity.briefDescription_es && (
+            <p className="mt-4 max-w-2xl text-lg text-white/85">{opportunity.briefDescription_es}</p>
+          )}
+          <Button href="#dossier" className="mt-8">
+            Solicitar información
+          </Button>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
-        <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Lo esencial</h2>
-        <Card className="grid grid-cols-1 gap-6 text-ink md:grid-cols-3">
-          <p>
-            <strong className="text-charcoal">Superficie:</strong> {opportunity.surface}
-          </p>
-          <p>
-            <strong className="text-charcoal">Vocación:</strong> {opportunity.vocation_es}
-          </p>
-          <p>
-            <strong className="text-charcoal">Disponibilidad:</strong> {opportunity.availability_es}
-          </p>
-        </Card>
-        {opportunity.briefDescription_es && (
-          <p className="mt-8 text-lg leading-relaxed text-ink">{opportunity.briefDescription_es}</p>
-        )}
-      </section>
+      {facts.length > 0 ? (
+        <section className="mx-auto max-w-5xl px-6 py-20 md:px-10">
+          <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">Lo esencial</h2>
+          <Card className="grid grid-cols-1 gap-6 text-ink md:grid-cols-3">
+            {facts.map(([label, value]) => (
+              <p key={label}>
+                <strong className="text-charcoal">{label}:</strong> {value}
+              </p>
+            ))}
+          </Card>
+        </section>
+      ) : (
+        <div className="h-20" />
+      )}
 
       {opportunity.reasons_es.length > 0 && (
         <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
@@ -102,9 +111,9 @@ export default async function OpportunityDetailES({ params }) {
       {opportunity.developmentPotential_es && (
         <section className="mx-auto max-w-5xl px-6 pb-20 md:px-10">
           <h2 className="mb-8 font-serif text-3xl font-semibold text-charcoal">
-            Potencial de Desarrollo
+            La oportunidad
           </h2>
-          <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed text-ink shadow-sm">
+          <p className="rounded-lg border border-border bg-paper p-8 leading-relaxed whitespace-pre-line text-ink shadow-sm">
             {opportunity.developmentPotential_es}
           </p>
         </section>
