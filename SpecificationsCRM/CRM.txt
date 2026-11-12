@@ -1,0 +1,303 @@
+You are working inside my existing real estate website built with Next.js, Tailwind, and the current Ginkgo design system. I need you to implement a COMPLETE Real Estate CRM (Customer Relationship Management) system directly into the project. This is NOT a simple contact form — it is the full operational backoffice for managing properties, leads, clients, and automations.
+
+Follow these instructions carefully:
+
+------------------------------------------------------------
+### 1. GENERAL REQUIREMENTS
+------------------------------------------------------------
+- The CRM must be fully integrated into the existing website design, colors, typography, spacing, and UI components.
+- Use the current Ginkgo brand style for all panels, forms, tables, and dashboards.
+- The CRM should live under a secure route such as `/admin` or `/dashboard`.
+- Authentication must be implemented (Auth0 or NextAuth) with role-based access:
+  - Admin
+  - Agent
+  - Viewer
+
+------------------------------------------------------------
+### 2. CORE CRM MODULES TO BUILD
+------------------------------------------------------------
+
+### A. PROPERTY MANAGEMENT MODULE
+Create a full CRUD system for properties:
+- Add property
+- Edit property
+- Delete property
+- Archive property
+- Publish/unpublish property
+
+Each property must include:
+- Title
+- Description
+- Location (city, state, country)
+- Price
+- Status (available, sold, reserved)
+- Property type (lot, house, commercial, development land)
+- Images (upload + gallery)
+- Videos (optional)
+- Map coordinates
+- Amenities
+- Tags
+- Agent assigned
+- Internal notes (not visible to public)
+
+Include:
+- Table view
+- Card view
+- Filters (price, location, status, type)
+- Search bar
+
+### B. LEAD MANAGEMENT MODULE
+Create a full CRM for leads:
+- Lead name
+- Email
+- Phone
+- Source (website, WhatsApp, referral, social media)
+- Property of interest
+- Lead status (new, contacted, follow-up, hot, cold, closed)
+- Notes
+- Assigned agent
+- Activity timeline
+
+Features:
+- Lead pipeline board (Kanban)
+- Lead table with filters
+- Lead activity log
+- Automatic timestamping of interactions
+
+### C. CLIENT MANAGEMENT MODULE
+Separate from leads:
+- Full client profile
+- Properties they are interested in
+- Documents (upload)
+- Meeting history
+- Communication log
+- Tasks assigned to the client
+
+### D. AUTOMATIONS MODULE
+Implement basic automations:
+- When a new lead arrives → assign to default agent
+- When a lead changes status → log activity
+- When a property is updated → notify assigned agent
+- When a client books a visit → send confirmation email
+
+### E. TASKS & REMINDERS MODULE
+Agents can create:
+- Tasks
+- Reminders
+- Follow-up actions
+- Property visit scheduling
+
+Tasks must include:
+- Title
+- Description
+- Due date
+- Assigned agent
+- Related lead or property
+
+### F. DASHBOARD & ANALYTICS
+Create a dashboard with:
+- Total leads
+- Leads by status
+- Properties available vs sold
+- Agent performance
+- Monthly activity
+- Conversion rate
+
+Use charts (Recharts or Chart.js).
+
+------------------------------------------------------------
+### 3. FRONTEND REQUIREMENTS
+------------------------------------------------------------
+- Use existing Ginkgo UI components.
+- Keep the header, spacing, and color palette consistent.
+- Build clean, modern admin screens:
+  - Sidebar navigation
+  - Top bar with user profile
+  - Responsive layout
+- Use Tailwind for styling.
+- Use server components where appropriate.
+
+------------------------------------------------------------
+### 4. BACKEND REQUIREMENTS
+------------------------------------------------------------
+- Use a database (PostgreSQL or MongoDB).
+- Create models for:
+  - Property
+  - Lead
+  - Client
+  - Task
+  - Agent
+  - ActivityLog
+- Create API routes for all CRUD operations.
+- Add validation and error handling.
+- Add pagination for large tables.
+
+------------------------------------------------------------
+### 5. SECURITY
+------------------------------------------------------------
+- Protect all admin routes.
+- Only authenticated users can access CRM.
+- Admin can manage everything.
+- Agents can only manage assigned leads and properties.
+
+------------------------------------------------------------
+### 6. DELIVERABLES
+------------------------------------------------------------
+Provide:
+1. All new pages and components.
+2. All API routes.
+3. All database models.
+4. Updated navigation to include CRM access.
+5. Full code for:
+   - Property module
+   - Lead module
+   - Client module
+   - Tasks module
+   - Dashboard
+   - Authentication
+6. Instructions for environment variables and database setup.
+
+How Access Works (Roles)
+You can implement role-based access so different people see different things.
+
+Admin
+Full access
+
+Can manage everything
+
+Can see all properties, leads, clients, tasks
+
+Can manage agents
+
+Agent
+Can only see their assigned leads
+
+Can only edit properties assigned to them
+
+Can update statuses
+
+Can add notes
+
+Cannot delete other agents’ data
+
+Viewer
+Read-only access
+
+For investors, partners, or assistants
+
+This is extremely common in real estate CRMs.
+
+How It Integrates With the Public Website
+Here’s the magic:
+
+✔ When management adds a property in the CRM
+It automatically appears on the public website.
+
+✔ When they update a property
+The public listing updates instantly.
+
+✔ When a customer fills a contact form
+A lead is created inside the CRM.
+
+✔ When an agent changes lead status
+The CRM logs the activity.
+
+✔ When a property is marked “sold”
+It disappears from the public listings.
+
+Everything is connected.
+
+Para Diego:
+
+“La idea es que el sitio tenga dos partes:
+
+la parte pública donde los clientes ven las propiedades, servicios y contactan,
+
+y una parte privada tipo CRM donde el equipo de la empresa puede entrar con usuario y contraseña para administrar todo.
+
+En ese CRM podrán crear, editar y borrar propiedades, manejar leads, clientes, tareas y notas internas. Los clientes nunca ven esta sección; está protegida por roles y permisos.
+
+Básicamente, el sitio público muestra las propiedades, y el CRM es el cerebro interno donde la empresa controla todo.”
+
+1. Módulos del CRM
+“¿Qué módulos quieres dentro del CRM? Por ejemplo:
+
+Gestión de propiedades
+
+Gestión de leads
+
+Gestión de clientes
+
+Tareas y recordatorios
+
+Documentos
+
+Gestión de agentes
+
+Automatizaciones (notificaciones, asignaciones)
+
+Dashboard con métricas
+
+Dime cuáles necesitas y cuáles no.”
+
+2. Estructura de la base de datos
+“¿Qué información quieres guardar en cada módulo?
+Por ejemplo, para propiedades:
+
+Título
+
+Descripción
+
+Precio
+
+Ubicación
+
+Imágenes
+
+Estado (disponible, vendido, reservado)
+
+Agente asignado
+
+Notas internas
+
+Para leads:
+
+Nombre
+
+Email
+
+Teléfono
+
+Fuente
+
+Propiedad de interés
+
+Estado del lead
+
+Notas
+
+Dime los campos exactos que necesitas en cada módulo.”
+
+3. Roles y permisos
+“¿Qué roles deben existir y qué puede hacer cada uno?
+
+Admin (acceso total)
+
+Agente (solo sus leads y propiedades)
+
+Viewer (solo lectura)
+
+Dime qué roles necesitas y qué permisos debe tener cada uno.”
+
+4. Flujo de trabajo
+“¿Cómo quieres que el CRM se conecte con la parte pública del sitio?
+
+¿Las propiedades creadas en el CRM deben aparecer automáticamente en la web pública?
+
+¿Los leads del formulario deben entrar directo al CRM?
+
+¿Quieres notificaciones cuando un lead cambia de estado?
+
+Dime cómo quieres que funcione el flujo.”
+
+
